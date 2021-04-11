@@ -1,4 +1,4 @@
-# Nodebucket
+# Bob's Computer Repair Shop
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.0.
 
@@ -25,3 +25,25 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+<br />
+
+---
+
+<br />
+
+Class Link: https://github.com/buwebdev/web-450
+
+---
+
+## Notes:
+
+Generate component in specific dir `ng g c pages/login`
+
+Generate Auth guard in shared dir `ng g g shared/auth`
+
+Generate Task Service in shared dir `ng g s shared/task`
+
+---
+
+## Deploy:
