@@ -32,7 +32,38 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 <br />
 
-Class Link: https://github.com/buwebdev/web-450
+[Class Github](https://github.com/buwebdev/web-450)
+<br /><br />
+
+---
+
+<br />
+
+**GH Branches:**
+
+> master: PROD
+>
+> develop: STAGE
+
+<br />
+
+**GH Pull Request:**
+
+> Fork this repo
+>
+> Clone your forked repo
+>
+> add my repository url as upstream
+>
+> Run `git pull upstream develop` to update your local develop with upstream develop
+>
+> Push your changes to your repo and make pull request
+>
+> Make sure you are making pull request to `develop` branch
+
+[GH Pull request Wiki](https://github.com/a-rayamajhi/bcrs/wiki/Pull-Request)
+
+<br />
 
 ---
 
@@ -46,4 +77,20 @@ Generate Task Service in shared dir `ng g s shared/task`
 
 ---
 
+<br /><br />
+
 ## Deploy:
+
+> `TBD`
+
+<br /><br />
+
+## Contributors
+
+> Anil Rayamajhi - arayamajhi@my365.bellevue.edu
+>
+> DWong - dwong@my365.bellevue.edu
+>
+> ERPerry - erperry@my365.bellevue.edu
+
+## <br />
