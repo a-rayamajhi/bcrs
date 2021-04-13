@@ -82,6 +82,8 @@ Generate Task Service in shared dir `ng g s shared/task`
 ## Deploy:
 
 > `TBD`
+> `TBD`
+> `TBD` 
 
 <br /><br />
 
