@@ -24,6 +24,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SecurityQuestionCreateComponent } from './security-question-create/security-question-create.component';
+import { SecurityQuestionListComponent } from './security-question-list/security-question-list.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { SecurityQuestionCreateComponent } from './security-question-create/secu
     HomeComponent,
     BaseLayoutComponent,
     AuthLayoutComponent,
-    SecurityQuestionCreateComponent
+    SecurityQuestionCreateComponent,
+    SecurityQuestionListComponent
   ],
   imports: [
     BrowserModule,
