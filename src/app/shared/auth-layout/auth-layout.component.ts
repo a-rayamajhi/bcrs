@@ -1,3 +1,13 @@
+/*
+============================================
+; Title: auth-layout component
+; Author: Professor Krasso
+; Date:   16 Apr 2021
+; Modified by: Devan Wong
+; Description: auth-layout component
+;===========================================
+*/
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({
