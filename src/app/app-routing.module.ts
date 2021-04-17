@@ -1,3 +1,13 @@
+/*
+============================================
+; Title: App-routing file
+; Author: Professor Krasso
+; Date:   16 Apr 2021
+; Modified by: Devan Wong
+; Description: Routes page
+;===========================================
+*/
+
 import { HomeComponent } from './pages/home/home.component';
 import { BaseLayoutComponent } from './shared/base-layout/base-layout.component';
 import { NgModule } from '@angular/core';

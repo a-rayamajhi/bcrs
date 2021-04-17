@@ -13,8 +13,8 @@ import { FormBuilder, FormGroup, Validators} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder } from '@angular/forms';
-import { SecurityQuestionService } from '../security-question.service';
-import { SecurityQuestion } from '../security-question.interface';
+import { SecurityQuestionService } from '../../security-question.service';
+import { SecurityQuestion } from '../../security-question.interface';
 
 @Component({
   selector: 'app-security-question-details',
@@ -48,6 +48,6 @@ export class SecurityQuestionDetailsComponent implements OnInit {
   }
   // Cancel Button
   cancel() {
-    this.router.navigate(['/secuirty-questions']);
+    this.router.navigate(['/security-questions']);
   }
 }
