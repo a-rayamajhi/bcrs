@@ -1,9 +1,19 @@
+/*
+============================================
+; Title: App Configuration
+; Author: Professor Krasso
+; Date:  16 Apr 2021
+; Modified by: Rayamajhi, Perry, Wong
+;===========================================
+*/
+
 /**
  * Require statements
  */
 const express = require('express');
 const http = require('http');
 const morgan = require('morgan');
+// deprecated, body parse is part of express now
 const bodyParser = require('body-parser');
 const path = require('path');
 const mongoose = require('mongoose');
@@ -12,8 +22,8 @@ const mongoose = require('mongoose');
  * App configurations
  */
 let app = express();
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({'extended': true}));
+app.use(express.json());
+app.use(express.urlencoded({ 'extended': true }));
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, '../dist/bcrs')));
 app.use('/', express.static(path.join(__dirname, '../dist/bcrs')));
@@ -21,23 +31,27 @@ app.use('/', express.static(path.join(__dirname, '../dist/bcrs')));
 /**
  * Variables
  */
-const port = 3000; // server port
+const port = process.env.PORT || 3000; // server port
 
-// TODO: This line will need to be replaced with your actual database connection string
-const conn = 'mongodb+srv://superadmin:s3cret@cluster0-lujih.mongodb.net/bcrs?retryWrites=true&w=majority';
+// DB connection string
+const conn = 'mongodb+srv://bcrs_user:admin@ems.nvxn7.mongodb.net/bcrs?retryWrites=true&w=majority';
 
 /**
  * Database connection
  */
-mongoose.connect(conn, {
-  promiseLibrary: require('bluebird'),
-  useUnifiedTopology: true,
-  useNewUrlParser: true
-}).then(() => {
-  console.debug(`Connection to the database instance was successful`);
-}).catch(err => {
-  console.log(`MongoDB Error: ${err.message}`)
-}); // end mongoose connection
+mongoose
+  .connect(conn, {
+    promiseLibrary: require("bluebird"),
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useCreateIndex: true,
+  })
+  .then(() => {
+    console.debug(`Connection to the database instance was successful`);
+  })
+  .catch((err) => {
+    console.log(`MongoDB Error: ${err.message}`);
+  }); // end mongoose connection
 
 /**
  * API(s) go here...
@@ -46,6 +60,6 @@ mongoose.connect(conn, {
 /**
  * Create and start server
  */
-http.createServer(app).listen(port, function() {
+http.createServer(app).listen(port, function () {
   console.log(`Application started and listening on port: ${port}`)
 }); // end http create server function
