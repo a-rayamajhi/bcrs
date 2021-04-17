@@ -19,7 +19,6 @@ import { SecurityQuestionListComponent } from './pages/security-question-list/se
 import { SecurityQuestionDetailsComponent } from './pages/security-question-details/security-question-details.component';
 import { SecurityQuestionCreateComponent } from './pages/security-question-create/security-question-create.component';
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
-
 // Import angulars
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
