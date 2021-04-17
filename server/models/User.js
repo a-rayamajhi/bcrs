@@ -1,43 +1,59 @@
 /*
 ============================================
-; Title: User modal
-; Author: Professor Krasso
+; Title: deleteUser api
+; Author: Erica Perry
 ; Date:   16 Apr 2021
-; Modified by: Anil Rayamajhi
-; Description: User Schema and methods to
-; make DB query to users collection
+; Modified by: Erica Perry
+; Description: creating the delete user api
 ;===========================================
 */
 
-var mongoose = require("mongoose");
 
-/*
- *    Fields username, password, and email
- */
-var userSchema = new mongoose.Schema({
-  username: String,
-  password: String,
-  email: String,
-});
-
-const User = (module.exports = mongoose.model("User", userSchema));
 
 /**
- * @param {*} user
- * @param {*} callback
- *
- * Database queries to add new user
+ * DeleteUser
  */
-module.exports.add = (user, callback) => {
-  user.save(callback);
-};
 
-module.exports.getById = (id, callback) => {
-  var query = { _id: id };
-  User.findById(query, callback);
-};
+ router.delete('/:id', async (req, res)=> {
+   try{
 
-module.exports.getOne = (email, callback) => {
-  var query = { email: email };
-  User.findOne(query, callback);
-};
+     User.findOne({'_id': req.params.id}, function(err,user) {
+       if(err) {
+         console.log(err);
+         const deleteUserMongodbErrorResponse = new ErrorResponse(500,'Internal server error', err);
+         res.status(500).send(deleteUserMongodbErrorResponse.toObject());
+
+   }else {
+     console.log(user);
+
+     user.set({
+       isDisabled: true
+     });
+
+     user.save(function(err, saveUser) {
+       if(err) {
+         console.log(err);
+         const savedUserMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
+         res.status(500).send(savedUserMongodbErrorResponse.toObject());
+
+
+       }else {
+         console.log(savedUser);
+         const savedUserResponse = new BaseResponse(200, 'Query successful', savedUser);
+         res.json(savedUserResponse.toObject());
+
+       }
+
+     })
+   }
+  })
+  } catch(e) {
+    console.log(e);
+    const deleteUserCatchErrorResponse = new ErrorResponse(500,'Internal server error',e.message);
+    res.status(500).send(deleteUserCatchErrorResponse.toObject());
+
+  } 
+  
+ });
+
+ module.exports = router
