@@ -18,7 +18,7 @@ const saltRounds = 10; //Hashing algorithms.
 /*
 FindAll - Devan
 */
-router.get('/', async(req, res){
+router.get('/', async(req, res) => {
   try
   {
     User.find({})
