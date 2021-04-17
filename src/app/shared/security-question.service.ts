@@ -43,8 +43,6 @@ export class SecurityQuestionService {
 
 
 
-
-
   /*
     UpdateSecurityQuestions API : Devan
   */
