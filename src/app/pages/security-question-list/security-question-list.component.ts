@@ -11,9 +11,10 @@
 import { Component, OnInit } from '@angular/core';
 // Imported the values for the security question
 import { SecurityQuestion } from '../../shared/security-question.interface';
-import { HttpClient } from '@angular/common/http';
 import { SecurityQuestionService } from '../../shared/security-question.service';
-
+// Imported for constructor
+import { HttpClient } from '@angular/common/http';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 @Component({
   selector: 'app-security-question-list',
   templateUrl: './security-question-list.component.html',
