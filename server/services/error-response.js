@@ -7,7 +7,7 @@
 ;===========================================
 */
 
-// Creating an error respons for proper QA testing
+// Creating an error response for proper QA testing
 class ErrorResponse {
   constructor(httpCode, message, data) {
     this.httpCode = httpCode;
@@ -20,7 +20,7 @@ class ErrorResponse {
       'httpCode': this.httpCode,
       'message': this.message,
       'data': this.data,
-      'timestamp': new Date().toLocaleDateString();
+      'timestamp': new Date().toLocaleDateString()
     }
   }
 }
