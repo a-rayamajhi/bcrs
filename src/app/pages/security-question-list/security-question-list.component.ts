@@ -10,9 +10,9 @@
 // This was auto generated
 import { Component, OnInit } from '@angular/core';
 // Imported the values for the security question
-import { SecurityQuestion } from '../security-question.interface';
+import { SecurityQuestion } from '../../shared/security-question.interface';
 import { HttpClient } from '@angular/common/http';
-import { SecurityQuestionService } from '../security-question.service';
+import { SecurityQuestionService } from '../../shared/security-question.service';
 
 @Component({
   selector: 'app-security-question-list',

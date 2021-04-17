@@ -6,6 +6,7 @@
 ; Modified by: Devan Wong
 ;===========================================
 */
+const express = require('express');
 const SecurityQuestion = require('../models/security-question');
 const ErrorResponse = require('../services/error-response');
 const BaseResponse = require('../services/base-response');
