@@ -92,6 +92,6 @@ Generate Task Service in shared dir `ng g s shared/task`
 >
 > Devan Wong - dwong@my365.bellevue.edu
 >
-> ERPerry - erperry@my365.bellevue.edu
+> Erica Perry - erperry@my365.bellevue.edu
 
 ## <br />
