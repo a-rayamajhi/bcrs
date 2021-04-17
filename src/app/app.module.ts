@@ -25,6 +25,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SecurityQuestionCreateComponent } from './security-question-create/security-question-create.component';
 import { SecurityQuestionListComponent } from './security-question-list/security-question-list.component';
+import { SecurityQuestionDetailsComponent } from './security-question-details/security-question-details.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { SecurityQuestionListComponent } from './security-question-list/security
     BaseLayoutComponent,
     AuthLayoutComponent,
     SecurityQuestionCreateComponent,
-    SecurityQuestionListComponent
+    SecurityQuestionListComponent,
+    SecurityQuestionDetailsComponent
   ],
   imports: [
     BrowserModule,
