@@ -23,10 +23,10 @@ export class SecurityQuestionService {
 
 
   /*
-    findAllSecurity API : Devan
+    findAllSecurity API
   */
   findAllSecurityQuestions(): Observable<any> {
-    return this.http.get('/api/security-questions/' + questionId);
+    return this.http.get('/api/security-questions/');
   }
 
   /*
@@ -44,11 +44,11 @@ export class SecurityQuestionService {
 
 
   /*
-    UpdateSecurityQuestions API : Devan
+    UpdateSecurityQuestions API
   */
   updateSecurityQuestion(questionId: string, updateSecurityQuestion: SecurityQuestion): Observable<any> {
     return this.http.put('/api/security-questions/' + questionId, {
-      text: updatedSecurityQuestion.text
+      text: updateSecurityQuestion.text
     })
   }
 
@@ -56,7 +56,9 @@ export class SecurityQuestionService {
     DeleteSecurityQuestions API : Erica
   */
 
-
+  deleteSecurityQuestion(questionId: string): Observable<any>{
+    return this.http.delete('/api/security-questions/' + questionId);
+  }
   /*
     FindSecurityQuestionsByIds API: Sprint 2
   */

@@ -17,7 +17,7 @@ const BaseResponse = require('../services/base-response');
 const router = express.Router();
 
 /*
-FindAll - Devan
+FindAll
 */
 router.get('/', async (req, res) => {
   try {
@@ -45,7 +45,7 @@ router.get('/', async (req, res) => {
 });
 
 /*
-FindById - Erica
+FindById
 */
 router.get('/:id', async (req, res) => {
   try {
@@ -75,7 +75,7 @@ CreateSecurityApi - Anil
 */
 
 /*
-UpdateSecurityAPI - Devan
+UpdateSecurityAPI
 */
 router.put('/:id', async (req, res) => {
   try {
@@ -114,7 +114,7 @@ router.put('/:id', async (req, res) => {
 });
 
 /*
-DeleteSecurityAPI - Erica
+DeleteSecurityAPI
 */
 router.delete('/:id', async (req, res) => {
   try {
