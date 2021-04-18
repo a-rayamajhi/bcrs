@@ -9,7 +9,7 @@
 
 // Creating an error response for proper QA testing
 class ErrorResponse {
-  constructor(httpCode, message, data) {
+  constructor(httpCode, message, data = null) {
     this.httpCode = httpCode;
     this.message = message;
     this.data = data;

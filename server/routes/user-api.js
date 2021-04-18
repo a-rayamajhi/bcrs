@@ -18,29 +18,25 @@ const saltRounds = 10; //Hashing algorithms.
 /*
 FindAll - Devan
 */
-router.get('/', async(req, res) => {
-  try
-  {
+router.get('/', async (req, res) => {
+  try {
     User.find({})
-    .where('isDisables')
-    .equals(false)
-    .exec(function(err,users){
-      if(err)
-      {
-        console.log(err);
-        const findAllMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
-        res.status(500).send(findAllMongodbErrorResponse.toObject());
-      }
-      else
-      {
-        console.log(users);
-        const findAllMongodbUsersResponse = new BaseResponse(200, 'Query Successful', users);
-        res.json(findAllMongodbUsersResponse.toObject());
-      }
-    })
+      .where('isDisables')
+      .equals(false)
+      .exec(function (err, users) {
+        if (err) {
+          console.log(err);
+          const findAllMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
+          res.status(500).send(findAllMongodbErrorResponse.toObject());
+        }
+        else {
+          console.log(users);
+          const findAllMongodbUsersResponse = new BaseResponse(200, 'Query Successful', users);
+          res.json(findAllMongodbUsersResponse.toObject());
+        }
+      })
   }
-  catch (e)
-  {
+  catch (e) {
     const findAllMongodbCatchErrorResponse = new ErrorResponse(500, 'Internal server error', err);
     res.status(500).send(findAllMongodbCatchErrorResponse.toObject());
   }
@@ -57,18 +53,15 @@ CreateUser - Anil
 /*
 UpdateUser - Devan
 */
-router.put('/:id', async(req, res) => {
-  try
-  {
-    User.findOne({'_id': req.params.id}, function(err, user){
-      if (err)
-      {
+router.put('/:id', async (req, res) => {
+  try {
+    User.findOne({ '_id': req.params.id }, function (err, user) {
+      if (err) {
         console.log(err);
         const updateUserMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
         res.status(500).send(updateUserMongodbErrorResponse.toObject());
       }
-      else
-      {
+      else {
         console.log(user);
         user.set({
           firstName: req.body.firstName,
@@ -77,15 +70,13 @@ router.put('/:id', async(req, res) => {
           address: req.body.address,
           email: req.body.email
         })
-        user.save(function(err, savedUser){
-          if(err)
-          {
+        user.save(function (err, savedUser) {
+          if (err) {
             console.log(err);
             const savedUserMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
             res.status(500).send(savedUserMongodbErrorResponse.toObject());
           }
-          else
-          {
+          else {
             console.log(savedUser);
             const savedUserResponse = new BaseResponse(200, 'Query Successful', savedUser)
             res.json(savedUserResponse.toObject());
@@ -94,10 +85,9 @@ router.put('/:id', async(req, res) => {
       }
     })
   }
-  catch (e)
-  {
+  catch (e) {
     console.log(e);
-    const updateUserCatchErrorResponse =  new ErrorResponse(500, 'Internal server error', e.message);
+    const updateUserCatchErrorResponse = new ErrorResponse(500, 'Internal server error', e.message);
     res.status(500).send(updateUserCatchErrorResponse.toObject());
   }
 })
@@ -105,3 +95,5 @@ router.put('/:id', async(req, res) => {
 /*
 DeleteUser - Erica
 */
+
+module.exports = router;

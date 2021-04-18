@@ -3,19 +3,19 @@
 ; Title: Base-response.js
 ; Author: Professor Krasso
 ; Date:  16 Apr 2021
-; Modified by: Devan Wong
+; Modified by: Devan Wong, Anil Rayamajhi
 ;===========================================
 */
 
 // Creating an base response for proper QA testing
 class BaseResponse {
-  constructor(httpCode, message, data) {
+  constructor(httpCode, message, data = null) {
     this.httpCode = httpCode;
     this.message = message;
     this.data = data;
   }
 
-  toObject(){
+  toObject() {
     return {
       'httpCode': this.httpCode,
       'message': this.message,
