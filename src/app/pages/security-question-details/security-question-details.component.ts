@@ -12,7 +12,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { FormBuilder } from '@angular/forms';
 import { SecurityQuestionService } from '../../shared/security-question.service';
 import { SecurityQuestion } from '../../shared/security-question.interface';
 
