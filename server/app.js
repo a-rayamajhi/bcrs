@@ -35,6 +35,7 @@ app.use('/', express.static(path.join(__dirname, '../dist/bcrs')));
 
 /**
  * Variables
+ * Include environment variable to auto assign port for deployment
  */
 const port = process.env.PORT || 3000; // server port
 
