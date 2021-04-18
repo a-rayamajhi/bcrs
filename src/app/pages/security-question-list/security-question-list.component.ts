@@ -64,14 +64,13 @@ export class SecurityQuestionListComponent implements OnInit {
 
     // Pop up dialog to delete a user.
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(result);
       if (result === 'confirm') {
         this.securityQuestionService
           .deleteSecurityQuestion(recordId)
           .subscribe((res) => {
             console.log(`SecurityQuestion delete`);
             this.securityQuestions = this.securityQuestions.filter(
-              (u) => u._id! == recordId
+              (u) => u._id !== recordId
             );
           });
       }

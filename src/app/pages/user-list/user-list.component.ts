@@ -71,7 +71,7 @@ export class UserListComponent implements OnInit {
       if (result === 'confirm') {
         this.userService.deleteUser(userId).subscribe((res) => {
           console.log(`User delete`);
-          this.users = this.users.filter((u) => u._id! == userId);
+          this.users = this.users.filter((u) => u._id !== userId);
         });
       }
     });

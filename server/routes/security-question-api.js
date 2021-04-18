@@ -151,31 +151,36 @@ router.delete('/:id', async (req, res) => {
       if (err) {
         console.log(err);
         const deleteSecurityQuestionMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
-        res.status(500).send(deleteSecurityQuestionMongodbErrorResponse.toObject());
+        return res.status(500).send(deleteSecurityQuestionMongodbErrorResponse.toObject());
 
-      } else {
-        console.log(SecurityQuestion);
-
-        SecurityQuestion.set({
-          isDisabled: true
-        });
-
-        SecurityQuestion.save(function (err, savedSecurityQuestion) {
-          if (err) {
-            console.log(err);
-            const savedSecurityQuestionMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
-            res.status(500).send(savedSecurityQuestionMongodbErrorResponse.toObject());
-
-
-          } else {
-            console.log(savedSecurityQuestion);
-            const deleteSecurityQuestionResponse = new BaseResponse(200, 'Query successful', deletedSecurityQuestion);
-            res.json(deleteSecurityQuestionResponse.toObject());
-
-          }
-
-        })
       }
+
+      if (!SecurityQuestion) {
+        console.log('Question not found');
+        const notFoundResponse = new BaseResponse(401, 'Question not found');
+        return res.status(401).send(notFoundResponse.toObject());
+      }
+
+      console.log(SecurityQuestion);
+
+      SecurityQuestion.set({
+        isDisabled: true
+      });
+
+      SecurityQuestion.save(function (err, savedSecurityQuestion) {
+        if (err) {
+          console.log(err);
+          const savedSecurityQuestionMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
+          return res.status(500).send(savedSecurityQuestionMongodbErrorResponse.toObject());
+
+
+        }
+
+        console.log(savedSecurityQuestion);
+        const deleteSecurityQuestionResponse = new BaseResponse(200, 'Query successful', req.params.id);
+        return res.json(deleteSecurityQuestionResponse.toObject());
+
+      })
     })
   } catch (e) {
     console.log(e);

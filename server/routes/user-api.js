@@ -159,8 +159,54 @@ router.put('/:id', async (req, res) => {
   }
 })
 
+
 /*
-DeleteUser - Erica
+* DeleteUser API
 */
+router.delete('/:id', async (req, res) => {
+  try {
+
+    User.findOne({ '_id': req.params.id }, function (err, user) {
+      if (err) {
+        console.log(err);
+        const deleteUserMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
+        return res.status(500).send(deleteUserMongodbErrorResponse.toObject());
+
+      }
+
+      if (!user) {
+        console.log('User not found');
+        const notFoundResponse = new BaseResponse(401, 'User not found');
+        return res.status(401).send(notFoundResponse.toObject());
+      }
+
+      console.log(user);
+      User.set({
+        isDisabled: true
+      });
+
+      User.save(function (err, savedUser) {
+        if (err) {
+          console.log(err);
+          const savedUserMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
+          return res.status(500).send(savedUserMongodbErrorResponse.toObject());
+
+
+        }
+
+        console.log(savedUser);
+        const deleteSecurityQuestionResponse = new BaseResponse(200, 'Query successful', req.params.id);
+        return res.json(deleteSecurityQuestionResponse.toObject());
+
+      })
+    })
+  } catch (e) {
+    console.log(e);
+    const deleteUserCatchErrorResponse = new ErrorResponse(500, 'Internal server error', e.message);
+    res.status(500).send(deleteUserCatchErrorResponse.toObject());
+
+  }
+
+});
 
 module.exports = router;
