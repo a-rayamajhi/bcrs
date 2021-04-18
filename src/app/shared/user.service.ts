@@ -22,7 +22,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   /*
-    findAllUser API : Devan,Anil,Ericka
+    findAllUser API
   */
   findAllUsers(): Observable<any> {
     return this.http.get('/api/users');
@@ -37,10 +37,10 @@ export class UserService {
   */
 
    /*
-    updateUser API : Devan
+    updateUser API
   */
   updateUser(userId: string, user: User): Observable<any> {
-    return this.http.put('api/users/' + userId, {
+    return this.http.put('/api/users/' + userId, {
       firstName: user.firstName,
       lastName: user.lastName,
       phoneNumber: user.phoneNumber,
@@ -49,7 +49,9 @@ export class UserService {
     });
   }
    /*
-    deleteUser API : Erica
+    deleteUser API
   */
-
+  deleteUser(userId: string): Observable<any> {
+    return this.http.delete('/api/users/' + userId);
+  }
 }

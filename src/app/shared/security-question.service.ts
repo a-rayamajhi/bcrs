@@ -11,7 +11,7 @@
 import { Injectable } from '@angular/core';
 // Imported security question interface.
 import { SecurityQuestion } from "./security-question.interface";
-import { HttpClient } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -23,10 +23,10 @@ export class SecurityQuestionService {
 
 
   /*
-    findAllSecurity API : Devan
+    findAllSecurity API
   */
   findAllSecurityQuestions(): Observable<any> {
-    return this.http.get('/api/security-questions/' + questionId);
+    return this.http.get('/api/security-questions/');
   }
 
   /*
@@ -44,18 +44,20 @@ export class SecurityQuestionService {
 
 
   /*
-    UpdateSecurityQuestions API : Devan
+    UpdateSecurityQuestions API
   */
   updateSecurityQuestion(questionId: string, updateSecurityQuestion: SecurityQuestion): Observable<any> {
     return this.http.put('/api/security-questions/' + questionId, {
-      text: updatedSecurityQuestion.text
+      text: updateSecurityQuestion.text
     })
   }
 
   /*
-    DeleteSecurityQuestions API : Erica
+    DeleteSecurityQuestions API
   */
-
+  deleteSecurityQuestion(questionId: string): Observable<any>{
+    return this.http.delete('/api/security-questions/' + questionId);
+  }
 
   /*
     FindSecurityQuestionsByIds API: Sprint 2
