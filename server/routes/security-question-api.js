@@ -1,9 +1,9 @@
 /*
 ============================================
 ; Title:  security question Api
-; Author: Erica perry
+; Author: Professor Krasso
 ; Date:   17 Apr 2021
-; Modified by: Devan Wong, Erica Perry
+; Modified by: Devan Wong, Erica Perry, Anil Rayamajhi
 ; Description: Creating security questions apis
 ;===========================================
 */
