@@ -81,7 +81,7 @@ router.post('/', async (req, res) => {
     // salt hash password
     const hashedPassword = bcrypt.hashSync(req.body.password, saltRounds);
     const standardRole = {
-      text: 'standard'
+      role: 'standard'
     }
 
     const newUser = {
