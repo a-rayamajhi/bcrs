@@ -2,13 +2,13 @@
 ============================================
 ; Title: security-question interface file
 ; Author: Professor Krasso
-; Date:   16 Apr 2021
-; Modified by: Devan Wong
+; Date:   17 Apr 2021
+; Modified by: Devan Wong, Anil Rayamajhi
 ; Description: security-question interface page
 ;===========================================
 */
 
-export interface SecurityQuestion {
+export interface ISecurityQuestion {
   _id: string;
   text: string;
 }

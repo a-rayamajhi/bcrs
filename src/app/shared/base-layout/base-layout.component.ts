@@ -2,26 +2,36 @@
 ============================================
 ; Title: base-layout component
 ; Author: Professor Krasso
-; Date:   16 Apr 2021
-; Modified by: Devan Wong
+; Date:   17 Apr 2021
+; Modified by: Anil Rayamajhi
 ; Description: base-layout component
 ;===========================================
 */
 
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-base-layout',
   templateUrl: './base-layout.component.html',
-  styleUrls: ['./base-layout.component.css']
+  styleUrls: ['./base-layout.component.css'],
 })
 export class BaseLayoutComponent implements OnInit {
+  /**
+   *
+   * @param router Router
+   * @param cookieService CookieService
+   */
+  constructor(private router: Router, private cookieService: CookieService) {}
 
-  year: number = Date.now();
+  ngOnInit(): void {}
 
-  constructor() { }
-
-  ngOnInit(): void {
+  /**
+   * logOut(): delete session_user cookie and redirect to login page
+   */
+  logOut() {
+    this.cookieService.delete('session-user');
+    this.router.navigate(['session/signin']);
   }
-
 }

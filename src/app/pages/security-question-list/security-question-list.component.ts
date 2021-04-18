@@ -2,42 +2,79 @@
 ============================================
 ; Title: Security Question List Component TS
 ; Author: Professor Krasso
-; Date:   16 Apr 2021
-; Modified by: Devan Wong
+; Date:   17 Apr 2021
+; Modified by: Devan Wong, Anil Rayamajhi
 ; Description: typescript component file focusing on the security question list page
 ;===========================================
 */
-// This was auto generated
+
 import { Component, OnInit } from '@angular/core';
 // Imported the values for the security question
-import { SecurityQuestion } from '../../shared/security-question.interface';
+import { ISecurityQuestion } from '../../shared/security-question.interface';
 import { SecurityQuestionService } from '../../shared/security-question.service';
 // Imported for constructor
 import { HttpClient } from '@angular/common/http';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { DeleteRecordDialogComponent } from 'src/app/shared/delete-record-dialog/delete-record-dialog.component';
+
 @Component({
   selector: 'app-security-question-list',
   templateUrl: './security-question-list.component.html',
-  styleUrls: ['./security-question-list.component.css']
+  styleUrls: ['./security-question-list.component.css'],
 })
-
 export class SecurityQuestionListComponent implements OnInit {
-  securityQuestions: SecurityQuestion[];
+  securityQuestions: ISecurityQuestion[];
   displayedColumns = ['question', 'functions'];
 
-  constructor(private http: HttpClient, private dialog: MatDialog, private securityQuestionService: SecurityQuestionService) {
+  constructor(
+    private http: HttpClient,
+    private dialog: MatDialog,
+    private securityQuestionService: SecurityQuestionService
+  ) {
     // Subscribing to the findAllSecurityQuestion
-    this.securityQuestionService.findAllSecurityQuestions().subscribe(res => {
-      this.securityQuestions = res['data'];
-    },  err => {
-      console.log(err);
-    })
-   }
-
-  ngOnInit(): void {
+    this.securityQuestionService.findAllSecurityQuestions().subscribe(
+      (res) => {
+        this.securityQuestions = res['data'];
+        console.log(this.securityQuestions);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 
-  // DeleteSecurity API: Erica
+  ngOnInit(): void {}
 
-  // Mat Dialog function for pop up feature: Erica
+  /**
+   *
+   * @param recordId string
+   *
+   * Delete function
+   */
+  delete(recordId: string) {
+    const dialogRef = this.dialog.open(DeleteRecordDialogComponent, {
+      data: {
+        recordId,
+        dialogHeader: 'Delete Record Dialog',
+        dialogBody: `Are you sure you want to delete user ${recordId} ?`,
+      },
+      disableClose: true,
+      width: '800px',
+    });
+
+    // Pop up dialog to delete a user.
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(result);
+      if (result === 'confirm') {
+        this.securityQuestionService
+          .deleteSecurityQuestion(recordId)
+          .subscribe((res) => {
+            console.log(`SecurityQuestion delete`);
+            this.securityQuestions = this.securityQuestions.filter(
+              (u) => u._id! == recordId
+            );
+          });
+      }
+    });
+  }
 }

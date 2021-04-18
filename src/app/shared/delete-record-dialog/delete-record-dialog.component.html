@@ -3,12 +3,21 @@
 
 <div>
   <p>{{ dialogBody }}</p>
-  <small style="color: #df546a;">Warning: This cannot be undone.</small>
+  <small style="color: #df546a">Warning: This cannot be undone.</small>
 </div>
 
 <hr />
 
 <div mat-dialog-actions align="end">
-  <button mat-raised-button matDialogClose="cancel" color="primary">No Thanks</button>
-  <button mat-raised-button matDialogClose="confirm" color="accent" cdkFocusInitial>Accept</button>
+  <button mat-raised-button matDialogClose="cancel" color="primary">
+    No Thanks
+  </button>
+  <button
+    mat-raised-button
+    matDialogClose="confirm"
+    color="accent"
+    cdkFocusInitial
+  >
+    Accept
+  </button>
 </div>

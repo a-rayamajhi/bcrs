@@ -2,8 +2,8 @@
 ============================================
 ; Title: User API profile
 ; Author: Professor Krasso
-; Date:  16 Apr 2021
-; Modified by: Devan Wong
+; Date:  17 Apr 2021
+; Modified by: Devan Wong, Anil Rayamajhi
 ;===========================================
 */
 const express = require('express');
@@ -21,7 +21,7 @@ FindAll - Devan
 router.get('/', async (req, res) => {
   try {
     User.find({})
-      .where('isDisables')
+      .where('isDisabled')
       .equals(false)
       .exec(function (err, users) {
         if (err) {
@@ -43,15 +43,82 @@ router.get('/', async (req, res) => {
 })
 
 /*
-FindById - Anil
+* FindById
 */
+router.get('/:id', async (req, res) => {
+  let status = 200;
+  try {
+    User.findOne({ '_id': req.params.id }, function (err, securityQuestion) {
+      if (err) {
+        console.log(err);
+        status = 500
+        const findByIdMongodbErrorResponse = new ErrorResponse(status, 'Internal server error', err);
+        return res.status(status).send(findByIdMongodbErrorResponse.toObject());
 
-/*
-CreateUser - Anil
-*/
+      }
 
+      console.log(securityQuestion);
+      const findByIdResponse = new BaseResponse(status, 'Query successful', securityQuestion);
+      return res.status(status).send(findByIdResponse.toObject());
+
+
+    })
+  } catch (e) {
+    console.log(e);
+    status = 500
+    const findByIdCatchResponse = new ErrorResponse(status, 'Internal server error', e.message);
+    res.status(status).send(findByIdCatchResponse.toObject());
+  }
+})
+
+
+/**
+ * CreateUser
+ */
+router.post('/', async (req, res) => {
+  let status = 201;
+  try {
+    // salt hash password
+    const hashedPassword = bcrypt.hashSync(req.body.password, saltRounds);
+    const standardRole = {
+      text: 'standard'
+    }
+
+    const newUser = {
+      userName: req.body.userName,
+      password: hashedPassword,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      phoneNumber: req.body.phoneNumber,
+      address: req.body.address,
+      email: req.body.email,
+      role: standardRole
+    }
+
+    User.create(newUser, function (err, user) {
+      if (err) {
+        console.log(err);
+        status = 500;
+        const createUserMongodbErrorResponse = new ErrorResponse(status, 'Internal server error', err);
+        return res.status(status).send(createUserMongodbErrorResponse.toObject());
+      }
+
+      console.log(user);
+      const createUserResponse = new BaseResponse(status, 'Query Successful', user);
+      return res.status(status).send(createUserResponse.toObject());
+
+
+    })
+  }
+  catch (error) {
+    console.log(error);
+    status = 500;
+    const createUserCatchErrorResponse = new ErrorResponse(status, 'Internal server error', error.message);
+    res.status(status).send(createUserCatchErrorResponse.toObject());
+  }
+});
 /*
-UpdateUser - Devan
+UpdateUser
 */
 router.put('/:id', async (req, res) => {
   try {

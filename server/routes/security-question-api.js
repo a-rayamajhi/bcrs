@@ -17,7 +17,7 @@ const BaseResponse = require('../services/base-response');
 const router = express.Router();
 
 /*
-FindAll
+* FindAll
 */
 router.get('/', async (req, res) => {
   try {
@@ -45,7 +45,7 @@ router.get('/', async (req, res) => {
 });
 
 /*
-FindById
+* FindById
 */
 router.get('/:id', async (req, res) => {
   try {
@@ -70,13 +70,41 @@ router.get('/:id', async (req, res) => {
   }
 })
 
-/*
-CreateSecurityApi - Anil
-*/
+/**
+ * CreateSecurityApi
+ */
+router.post('/', async (req, res) => {
+  let status = 200;
+  try {
+    const newSecurityQuestion = {
+      text: req.body.text
+    }
+    SecurityQuestion.create(newSecurityQuestion, function (err, securityQuestion) {
+      if (err) {
+        console.log(err);
+        status = 500;
+        const createSecurityQuestionMongodbErrorResponse = new ErrorResponse(status, 'Internal server error', err);
+        return res.status(status).send(createSecurityQuestionMongodbErrorResponse.toObject());
+      }
 
-/*
-UpdateSecurityAPI
-*/
+      console.log(securityQuestion);
+      const createSecurityQuestionResponse = new BaseResponse(status, 'Query Successful', securityQuestion);
+      return res.status(status).send(createSecurityQuestionResponse.toObject());
+
+
+    })
+  }
+  catch (error) {
+    console.log(error);
+    status = 500;
+    const createSecurityQuestionCatchErrorResponse = new ErrorResponse(status, 'Internal server error', error.message);
+    res.status(status).send(createSecurityQuestionCatchErrorResponse.toObject());
+  }
+});
+
+/**
+ * UpdateSecurityAPI
+ */
 router.put('/:id', async (req, res) => {
   try {
     SecurityQuestion.findOne({ '_id': req.params.id }, function (err, securityQuestion) {
@@ -114,7 +142,7 @@ router.put('/:id', async (req, res) => {
 });
 
 /*
-DeleteSecurityAPI
+* DeleteSecurityAPI
 */
 router.delete('/:id', async (req, res) => {
   try {

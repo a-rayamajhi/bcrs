@@ -22,9 +22,9 @@ const router = express.Router();
  * Description: SignIn Route and Controller
  */
 router.post('/signin', async (req, res) => {
-  let status = 400;
+  let status = 200;
   try {
-    User.findOne({ 'userName': req.body.userName }, function (err, user) {
+    User.findOne({ 'userName': req.body.userName, 'isDisabled': false }, function (err, user) {
       if (err) {
         console.log('Error finding userName', err)
         status = 500;
@@ -34,9 +34,9 @@ router.post('/signin', async (req, res) => {
 
       // handle falsey user
       if (!user) {
-        console.log('User is invalid', req.body.userName);
+        console.log('User not found', req.body.userName);
         status = 401;
-        const invalidUserNameResponse = new BaseResponse(status, "Invalid username and/or password")
+        const invalidUserNameResponse = new BaseResponse(status, "User not found")
         return res.status(status).send(invalidUserNameResponse.toObject());
       }
 

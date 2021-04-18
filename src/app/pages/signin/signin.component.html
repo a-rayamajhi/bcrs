@@ -1,2 +1,61 @@
-<!-- This is signin.html page -->
-<p>signin works!</p>
+<div fxLayout="row wrap" class="login-wrapper">
+  <div fxFlex.lt-md="0%" fxFlex.gt-sm="60%" class="login-banner"></div>
+
+  <div fxFlex="100%" fxFlex.gt-sm="40%">
+    <div fxLayout="column">
+      <mat-card class="mat-elevation-z0 login-container">
+        <div class="app-title">
+          <span routerLink="/">BCRS</span>
+        </div>
+        <mat-card-subtitle class="login-subtitle mat-headline">
+          Employee Sign in
+        </mat-card-subtitle>
+        <form
+          [formGroup]="form"
+          (ngSubmit)="signIn(); form.reset()"
+          #loginForm="ngForm"
+        >
+          <mat-card-content>
+            <!-- Login Form -->
+            <mat-card-content action="">
+              <mat-card-content>
+                <mat-form-field class="form-full-width">
+                  <input
+                    type="text"
+                    matInput
+                    placeholder="Username"
+                    [formControl]="form.controls['userName']"
+                    fullWidth
+                  />
+
+                  <mat-error *ngIf=""> Username is a required field</mat-error>
+                </mat-form-field>
+                <mat-form-field class="form-full-width">
+                  <input
+                    type="password"
+                    matInput
+                    placeholder="Password"
+                    [formControl]="form.controls['password']"
+                    fullWidth
+                  />
+                  <mat-error *ngIf=""> Password is a required field</mat-error>
+                </mat-form-field>
+              </mat-card-content>
+              <mat-card-actions align="end">
+                <button
+                  type="submit"
+                  flFlex
+                  mat-raised-button
+                  color="primary"
+                  [disabled]="!form.valid"
+                >
+                  Sign In
+                </button>
+              </mat-card-actions>
+            </mat-card-content>
+          </mat-card-content>
+        </form>
+      </mat-card>
+    </div>
+  </div>
+</div>

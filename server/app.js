@@ -60,7 +60,7 @@ mongoose
   }); // end mongoose connection
 
 /**
- * API(s) go here...
+ * APIs
  */
 app.use('/api/users', UserApi);
 app.use('/api/session', SessionApi);

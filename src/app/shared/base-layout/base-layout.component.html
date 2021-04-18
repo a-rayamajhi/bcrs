@@ -1,18 +1,33 @@
-<!-- This is the base-layout html page -->
-<div fxLayout="column">
+<!-- logo -->
+<div class="app-title">
+  <span routerLink="/">BCRS</span>
+</div>
 
+<div fxLayout="column">
   <!-- navigation -->
   <nav fxFlex>
     <mat-toolbar>
       <!-- navbar container -->
       <div class="navbar-container">
-        <!-- logo -->
-        <button class="logo" routerLink="/" mat-button>BCRS</button>
+        <button routerLink="/" mat-button>HOME</button>
+        <button routerLink="/about" mat-button>ABOUT US</button>
 
-        <button class="navbar-link" routerLink="/" mat-button>Home</button>
-        <button class="navbar-link" mat-button>About</button>
+        <div class="employee-id">
+          <button mat-stroked-button [matMenuTriggerFor]="menu">
+            <mat-icon style="font-size: 18px">face</mat-icon>
+          </button>
+
+          <mat-menu #menu="matMenu" xPosition="before">
+            <button routerLink="/users" mat-menu-item>
+              User Configuration
+            </button>
+            <button routerLink="/security-questions" mat-menu-item>
+              Security Question
+            </button>
+            <button mat-menu-item (click)="logOut()">Sign Out</button>
+          </mat-menu>
+        </div>
       </div>
-
     </mat-toolbar>
   </nav>
 
@@ -23,15 +38,43 @@
     </main>
   </div>
 
-  <!-- footer -->
-  <div fxFlex>
-    <footer class="footer">
-      <mat-toolbar class="footer-content">
-        <p>
-          &copy; {{year | date: 'yyyy'}} - Bob's Computer Repair Shop - <a href="https://www.bellevue.edu/" class="bu-link" target="_blank">Bellevue University</a>
-        </p>
-      </mat-toolbar>
-    </footer>
+  <!-- Footer -->
+  <div fxLayout="row wrap" class="footer">
+    <div fxFlex="100%" fxFlex.gt-sm="55%">
+      <div class="footer-tile">
+        <div class="about-title">BCRS</div>
+        <div class="about-content">
+          BCRS is built for every member of your software team to plan, track,
+          and release great software.Create user stories and issues, plan
+          sprints, and distribute tasks across your software team. Prioritize
+          and discuss your team’s work in full context with complete visibility.
+          Improve team performance based on visual data that your team can put
+          to use.
+        </div>
+      </div>
+    </div>
+    <div fxFlex="100%" fxFlex.gt-sm="20%"></div>
+    <div fxFlex="100%" fxFlex.gt-sm="25%">
+      <div class="footer-tile">
+        <div class="about-title padding-left-2">CONTACT US</div>
+        <div class="about-content">
+          <div class="content-wrapper">
+            <mat-icon color="secondary">chevron_right</mat-icon>
+            <div>support@bcrs.com</div>
+          </div>
+          <div class="content-wrapper">
+            <mat-icon color="secondary">chevron_right</mat-icon>
+            <div>(402) 293-2000</div>
+          </div>
+          <br /><br />
+          <div class="content-wrapper">
+            <div>
+              <div>1000 Galvin Rd S</div>
+              <div>Bellevue, NE 68005</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
 </div>

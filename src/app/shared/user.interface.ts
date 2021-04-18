@@ -8,7 +8,7 @@
 ;===========================================
 */
 // Creating variables to import into the db.
-export interface User {
+export interface IUser {
   _id: string;
   userName: string;
   password: string;
