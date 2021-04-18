@@ -2,8 +2,8 @@
 ============================================
 ; Title: User-list components
 ; Author: Erica Perry
-; Date:   16 Apr 2021
-; Modified by: Erica Perry
+; Date:   17 Apr 2021
+; Modified by: Erica Perry, Devan Wong
 ; Description: user list component.ts
 ;===========================================
 */
@@ -39,6 +39,7 @@ export class UserListComponent implements OnInit {
   ngOnInit() {
   }
 
+  // Delete function
   delete(userId, recordId) {
     const dialogRef = this.dialog.open(DeleteRecordDialogComponent, {
       data: {
@@ -49,7 +50,7 @@ export class UserListComponent implements OnInit {
       disableClose: true,
       width: '800px'
     });
-
+    // Pop up dialog to delete a user.
     dialogRef.afterClosed().subscribe(result => {
       if( result === 'confirm') {
         this.userService.deleteUser(userId).subscribe(res =>{
