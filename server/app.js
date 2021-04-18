@@ -18,6 +18,11 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const mongoose = require('mongoose');
 
+// API imports
+const UserApi = require('./routes/user-api');
+const SessionApi = require('./routes/session-api');
+const SecurityQuestionApi = require('./routes/security-question-api');
+
 /**
  * App configurations
  */

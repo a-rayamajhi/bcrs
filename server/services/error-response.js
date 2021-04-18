@@ -2,8 +2,8 @@
 ============================================
 ; Title: error-response.js
 ; Author: Professor Krasso
-; Date:  16 Apr 2021
-; Modified by: Devan Wong
+; Date:  17 Apr 2021
+; Modified by: Devan Wong, Anil Rayamajhi
 ;===========================================
 */
 
@@ -15,7 +15,7 @@ class ErrorResponse {
     this.data = data;
   }
 
-  toObject(){
+  toObject() {
     return {
       'httpCode': this.httpCode,
       'message': this.message,
@@ -25,4 +25,4 @@ class ErrorResponse {
   }
 }
 
-module.exports = ErrorMessage;
+module.exports = ErrorResponse;

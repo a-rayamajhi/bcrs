@@ -1,59 +1,34 @@
 /*
 ============================================
-; Title: deleteUser api
-; Author: Erica Perry
-; Date:   16 Apr 2021
-; Modified by: Erica Perry
-; Description: creating the delete user api
+; Title: user.js
+; Author: Professor Krasso
+; Date:   17 Apr 2021
+; Modified by: Anil Rayamajhi
+; Description: User Schema definition
 ;===========================================
 */
 
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const selectedSecurityQuestionSchema = require("../schemas/selected-security-question");
+const userRoleSchema = require("../schemas/user-role");
 
-
-/**
- * DeleteUser
+/*
+ *    Fields username, password, and email
  */
+var userSchema = new Schema({
+  userName: { type: String, required: true, unique: true, dropDups: true },
+  password: { type: String, required: true },
+  firstName: { type: String },
+  lastName: { type: String },
+  phoneNumber: { type: String },
+  address: { type: String },
+  email: { type: String },
+  isDisabled: { type: Boolean, default: false },
+  role: userRoleSchema,
+  selectedSecurityQuestions: [selectedSecurityQuestionSchema],
+  dateCreated: { type: Date, default: new Date() },
+  dateUpdated: { type: Date }
+}, { collection: 'users' });
 
- router.delete('/:id', async (req, res)=> {
-   try{
-
-     User.findOne({'_id': req.params.id}, function(err,user) {
-       if(err) {
-         console.log(err);
-         const deleteUserMongodbErrorResponse = new ErrorResponse(500,'Internal server error', err);
-         res.status(500).send(deleteUserMongodbErrorResponse.toObject());
-
-   }else {
-     console.log(user);
-
-     user.set({
-       isDisabled: true
-     });
-
-     user.save(function(err, saveUser) {
-       if(err) {
-         console.log(err);
-         const savedUserMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
-         res.status(500).send(savedUserMongodbErrorResponse.toObject());
-
-
-       }else {
-         console.log(savedUser);
-         const savedUserResponse = new BaseResponse(200, 'Query successful', savedUser);
-         res.json(savedUserResponse.toObject());
-
-       }
-
-     })
-   }
-  })
-  } catch(e) {
-    console.log(e);
-    const deleteUserCatchErrorResponse = new ErrorResponse(500,'Internal server error',e.message);
-    res.status(500).send(deleteUserCatchErrorResponse.toObject());
-
-  } 
-  
- });
-
- module.exports = router
+module.exports = mongoose.model("User", userSchema);
