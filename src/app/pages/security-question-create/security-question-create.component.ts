@@ -19,6 +19,7 @@ import { SecurityQuestion } from '../../shared/security-question.interface';
   templateUrl: './security-question-create.component.html',
   styleUrls: ['./security-question-create.component.css']
 })
+
 export class SecurityQuestionCreateComponent implements OnInit {
   form: FormGroup;
 
@@ -28,14 +29,17 @@ export class SecurityQuestionCreateComponent implements OnInit {
 
 
   ngOnInit() {
+    // This is for validators.
     this.form = this.fb.group({
       text: [null, Validators.compose([Validators.required])],
     });
   }
 
+  // This is the create function
   create() {
     const newSecurityQuestion = {} as SecurityQuestion;
     newSecurityQuestion.text = this.form.controls.text.value;
+    // This function will be correct one the createSecurity API is created in the security-question.service
     this.securityQuestionsService.createSecurityQuestion(newSecurityQuestion).subscribe(res => {
       this.router.navigate(['/security-questions']);
     }, err => {
@@ -43,6 +47,7 @@ export class SecurityQuestionCreateComponent implements OnInit {
     })
   }
 
+  // This is the cancel button.
   cancel() {
     this.router.navigate(['/security-questions']);
   }
