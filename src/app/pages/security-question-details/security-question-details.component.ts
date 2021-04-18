@@ -21,6 +21,9 @@ import { SecurityQuestion } from '../../shared/security-question.interface';
   styleUrls: ['./security-question-details.component.css']
 })
 export class SecurityQuestionDetailsComponent implements OnInit {
+  question: SecurityQuestion;
+  questionId: string;
+  form: FormGroup;
 
   constructor(private route: ActivatedRoute, private http: HttpClient, private fb: FormBuilder, private router: Router, private securityQuestionService: SecurityQuestionService) {
     this.questionId = this.route.snapshot.paramMap.get('questionId');
@@ -31,6 +34,7 @@ export class SecurityQuestionDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // Creating Validators.
     this.form = this.fb.group({
       text: [null, Validators.compose([Validators.required])]
     })
