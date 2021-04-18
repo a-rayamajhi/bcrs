@@ -3,7 +3,7 @@
 ; Title:  Security Question Create
 ; Author: Professor Krasso
 ; Date:   17 Apr 2021
-; Modified by: Devan Wong
+; Modified by: Erica Perry, Devan Wong
 ; Description: security-question-create component page
 ;===========================================
 */
@@ -36,17 +36,15 @@ export class SecurityQuestionCreateComponent implements OnInit {
   create() {
     const newSecurityQuestion = {} as SecurityQuestion;
     newSecurityQuestion.text = this.form.controls.text.value;
-
-    this.securityQuestionsService.create.createSecurityQuestion(newSecurityQuestion).subscribe(res => {
+    this.securityQuestionsService.createSecurityQuestion(newSecurityQuestion).subscribe(res => {
       this.router.navigate(['/security-questions']);
-    },err => {
+    }, err => {
       console.log(err);
     })
   }
 
   cancel() {
     this.router.navigate(['/security-questions']);
-
   }
 
 }

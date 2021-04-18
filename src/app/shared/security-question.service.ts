@@ -11,7 +11,7 @@
 import { Injectable } from '@angular/core';
 // Imported security question interface.
 import { SecurityQuestion } from "./security-question.interface";
-import { HttpClient } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
