@@ -53,12 +53,12 @@ export class SecurityQuestionService {
   }
 
   /*
-    DeleteSecurityQuestions API : Erica
+    DeleteSecurityQuestions API
   */
-
   deleteSecurityQuestion(questionId: string): Observable<any>{
     return this.http.delete('/api/security-questions/' + questionId);
   }
+
   /*
     FindSecurityQuestionsByIds API: Sprint 2
   */

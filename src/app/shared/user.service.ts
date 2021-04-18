@@ -40,7 +40,7 @@ export class UserService {
     updateUser API
   */
   updateUser(userId: string, user: User): Observable<any> {
-    return this.http.put('api/users/' + userId, {
+    return this.http.put('/api/users/' + userId, {
       firstName: user.firstName,
       lastName: user.lastName,
       phoneNumber: user.phoneNumber,

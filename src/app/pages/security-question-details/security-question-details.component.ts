@@ -36,7 +36,7 @@ export class SecurityQuestionDetailsComponent implements OnInit {
     })
   }
 
-  // Save question function: Devan
+  // Save question function
   saveQuestion() {
     const updatedSecurityQuestion = {} as SecurityQuestion;
     updatedSecurityQuestion.text = this.form.controls.text.value;
