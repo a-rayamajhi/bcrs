@@ -34,7 +34,19 @@ export class SecurityQuestionDetailsComponent implements OnInit {
   ) {
     this.questionId = this.route.snapshot.paramMap.get('questionId');
 
-    // FindSecurityQuestionById: Erica
+    this.securityQuestionService
+      .findSecurityQuestionById(this.questionId)
+      .subscribe(
+        (res) => {
+          this.question = res['data'];
+        },
+        (err) => {
+          console.log(err);
+        },
+        () => {
+          this.form.controls.text.setValue(this.question.text);
+        }
+      );
   }
 
   ngOnInit(): void {

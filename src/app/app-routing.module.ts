@@ -2,8 +2,8 @@
 ============================================
 ; Title: App-routing file
 ; Author: Professor Krasso
-; Date:   16 Apr 2021
-; Modified by: Devan Wong
+; Date:   18 Apr 2021
+; Modified by: Devan Wong, Anil rayamajhi
 ; Description: Routes page
 ;===========================================
 */
@@ -26,9 +26,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './shared/auth.guard';
 import { SecurityQuestionService } from './shared/security-question.service';
 
-
-
-
 const routes: Routes = [
   {
     path: '',
@@ -36,49 +33,56 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: HomeComponent
+        component: HomeComponent,
       },
       {
         path: 'users',
-        component: UserListComponent
+        component: UserListComponent,
       },
       {
-        path: 'users/:usersId',
-        component: UserDetailsComponent
+        path: 'users/:userId',
+        component: UserDetailsComponent,
       },
       {
         path: 'users/create/new',
-        component: UserCreateComponent
+        component: UserCreateComponent,
       },
       {
         path: 'security-questions',
-        component: SecurityQuestionListComponent
+        component: SecurityQuestionListComponent,
       },
       {
         path: 'security-questions/:questionId',
-        component: SecurityQuestionDetailsComponent
+        component: SecurityQuestionDetailsComponent,
       },
       {
         path: 'security-questions/create/new',
-        component: SecurityQuestionCreateComponent
-      }
+        component: SecurityQuestionCreateComponent,
+      },
     ],
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
-    {
-      path: 'session',
-      component: AuthLayoutComponent,
-      children: [
-        {
-          path: 'signin',
-          component: SigninComponent
-        }
-      ]
-    }
+  {
+    path: 'session',
+    component: AuthLayoutComponent,
+    children: [
+      {
+        path: 'signin',
+        component: SigninComponent,
+      },
+    ],
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true, enableTracing: false, scrollPositionRestoration: 'enabled', relativeLinkResolution: 'legacy' })],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forRoot(routes, {
+      useHash: true,
+      enableTracing: false,
+      scrollPositionRestoration: 'enabled',
+      relativeLinkResolution: 'legacy',
+    }),
+  ],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

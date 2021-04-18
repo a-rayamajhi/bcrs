@@ -19,17 +19,34 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./user-details.component.css'],
 })
 export class UserDetailsComponent implements OnInit {
+  user: IUser;
+  userId: string;
+  form: FormGroup;
+
   constructor(
     private router: Router,
     private userService: UserService,
     private fb: FormBuilder,
     private route: ActivatedRoute
-  ) {}
-  user: IUser;
-  userId: string;
-  form: FormGroup;
+  ) {
+    this.userId = this.route.snapshot.paramMap.get('userId');
 
-  // findUserByID: Erica.
+    this.userService.findUserById(this.userId).subscribe(
+      (res) => {
+        this.user = res['data'];
+      },
+      (err) => {
+        console.log(err);
+      },
+      () => {
+        this.form.controls.firstName.setValue(this.user.firstName);
+        this.form.controls.lastName.setValue(this.user.lastName);
+        this.form.controls.phoneNumber.setValue(this.user.phoneNumber);
+        this.form.controls.address.setValue(this.user.address);
+        this.form.controls.email.setValue(this.user.email);
+      }
+    );
+  }
 
   ngOnInit(): void {
     // Adding Validators to the form
@@ -64,4 +81,9 @@ export class UserDetailsComponent implements OnInit {
     );
   }
   // End saveUser
+
+  // This is the cancel button.
+  cancel() {
+    this.router.navigate(['/users']);
+  }
 }

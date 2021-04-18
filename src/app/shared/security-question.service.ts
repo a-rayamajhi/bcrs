@@ -30,9 +30,16 @@ export class SecurityQuestionService {
     return this.http.get('/api/security-questions/');
   }
 
-  /*
-    findSecurityById API : Erica
-  */
+  /**
+   *
+   * @param securityQuestionId string
+   * @returns Observable
+   *
+   * findSecurityQuestionById API
+   */
+  findSecurityQuestionById(securityQuestionId: string): Observable<any> {
+    return this.http.get(`/api/security-questions/${securityQuestionId}`);
+  }
 
   /**
    *
