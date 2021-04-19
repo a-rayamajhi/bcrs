@@ -41,6 +41,7 @@ import { SigninComponent } from './pages/signin/signin.component';
 import { UserCreateComponent } from './pages/user-create/user-create.component';
 import { UserDetailsComponent } from './pages/user-details/user-details.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
+import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delete-record-dialog.component'
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { UserListComponent } from './pages/user-list/user-list.component';
     UserCreateComponent,
     UserDetailsComponent,
     UserListComponent,
+    DeleteRecordDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +74,7 @@ import { UserListComponent } from './pages/user-list/user-list.component';
     MatInputModule,
     MatMenuModule,
     MatDialogModule,
-    MatTableModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -31,4 +31,5 @@ export class DeleteRecordDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
 }
