@@ -2,8 +2,8 @@
 ============================================
 ; Title: Security Question Details Component TS
 ; Author: Professor Krasso
-; Date:   16 Apr 2021
-; Modified by: Devan Wong
+; Date:   17 Apr 2021
+; Modified by: Devan Wong, Anil Rayamajhi
 ; Description: typescript component file focusing on the security questions details page
 ;===========================================
 */
@@ -32,8 +32,10 @@ export class SecurityQuestionDetailsComponent implements OnInit {
     private router: Router,
     private securityQuestionService: SecurityQuestionService
   ) {
+    // grab question id from url params
     this.questionId = this.route.snapshot.paramMap.get('questionId');
 
+    // find security question to pre fill security question edit
     this.securityQuestionService
       .findSecurityQuestionById(this.questionId)
       .subscribe(

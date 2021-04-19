@@ -19,13 +19,13 @@ import { SecurityQuestionListComponent } from './pages/security-question-list/se
 import { SecurityQuestionDetailsComponent } from './pages/security-question-details/security-question-details.component';
 import { SecurityQuestionCreateComponent } from './pages/security-question-create/security-question-create.component';
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
-// Import angulars
+// Import angular
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 // Import Guards
 import { AuthGuard } from './shared/auth.guard';
-import { SecurityQuestionService } from './shared/security-question.service';
 
+// Routes Declaration and assign components
 const routes: Routes = [
   {
     path: '',

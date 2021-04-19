@@ -19,7 +19,9 @@ const router = express.Router();
 
 /**
  * Method: POST
- * Description: SignIn Route and Controller
+ *
+ * SignIn Route and Controller
+ * @return User object
  */
 router.post('/signin', async (req, res) => {
   let status = 200;
@@ -59,6 +61,7 @@ router.post('/signin', async (req, res) => {
 
     })
   } catch (error) {
+    // Server error
     console.log(error)
     status = 500;
     const signinCatchErrorResponse = new ErrorResponse(status, "Internal server error", error.message)

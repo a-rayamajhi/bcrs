@@ -19,6 +19,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 
 // API imports
+const ProfileApi = require('./routes/index');
 const UserApi = require('./routes/user-api');
 const SessionApi = require('./routes/session-api');
 const SecurityQuestionApi = require('./routes/security-question-api');
@@ -62,6 +63,7 @@ mongoose
 /**
  * APIs
  */
+app.use('/api', ProfileApi);
 app.use('/api/users', UserApi);
 app.use('/api/session', SessionApi);
 app.use('/api/security-questions', SecurityQuestionApi);

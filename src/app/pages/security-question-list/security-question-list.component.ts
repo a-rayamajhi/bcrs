@@ -52,6 +52,7 @@ export class SecurityQuestionListComponent implements OnInit {
    * Delete function
    */
   delete(recordId: string) {
+    // Delete Security question confirmation modal
     const dialogRef = this.dialog.open(DeleteRecordDialogComponent, {
       data: {
         recordId,

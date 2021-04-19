@@ -32,6 +32,7 @@ export class SigninComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    // Form Build and validation
     this.form = this.fb.group({
       userName: [null, Validators.compose([Validators.required])],
       password: [
@@ -51,6 +52,7 @@ export class SigninComponent implements OnInit {
     const userName = this.form.controls.userName.value;
     const password = this.form.controls.password.value;
 
+    // network call to authenticate user based on username and password
     this.http
       .post('/api/session/signin', {
         userName,

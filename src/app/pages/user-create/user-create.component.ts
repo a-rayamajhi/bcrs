@@ -56,6 +56,7 @@ export class UserCreateComponent implements OnInit {
     newUser.address = this.form.controls.address.value;
     newUser.email = this.form.controls.email.value;
 
+    // createUser service method to make network call to create user
     this.userService.createUser(newUser).subscribe(
       (res) => {
         this.router.navigate(['/users']);

@@ -5,6 +5,7 @@
   >
 
   <mat-card-subtitle style="margin-top: 20px">
+    <!-- Create security question create form navigation -->
     <button
       mat-button
       routerLink="/security-questions/create/new"
@@ -15,6 +16,7 @@
   </mat-card-subtitle>
 
   <mat-card-content *ngIf="securityQuestions">
+    <!-- Security Question List -->
     <table mat-table [dataSource]="securityQuestions" style="width: 100%">
       <ng-container matColumnDef="question">
         <th mat-header-cell *matHeaderCellDef>Question</th>

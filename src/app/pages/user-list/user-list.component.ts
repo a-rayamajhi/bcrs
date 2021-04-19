@@ -3,7 +3,7 @@
 ; Title: User-list components
 ; Author: Erica Perry
 ; Date:   17 Apr 2021
-; Modified by: Erica Perry, Devan Wong
+; Modified by: Erica Perry, Devan Wong, Anil Rayamajhi
 ; Description: user list component.ts
 ;===========================================
 */
@@ -22,6 +22,7 @@ import { IUser } from './../../shared/user.interface';
 })
 export class UserListComponent implements OnInit {
   users: IUser[];
+  // Array of table headers
   displayedColumns = [
     'userName',
     'firstName',
@@ -36,6 +37,7 @@ export class UserListComponent implements OnInit {
     private dialog: MatDialog,
     private userService: UserService
   ) {
+    // FindAllUsers for User Configuration List View
     this.userService.findAllUsers().subscribe(
       (res) => {
         this.users = res['data'];
@@ -57,6 +59,7 @@ export class UserListComponent implements OnInit {
    * Delete function
    */
   delete(userId, recordId) {
+    // Delete Confirmation Modal
     const dialogRef = this.dialog.open(DeleteRecordDialogComponent, {
       data: {
         recordId,
@@ -69,8 +72,10 @@ export class UserListComponent implements OnInit {
     // Pop up dialog to delete a user.
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'confirm') {
+        // Network call to delete user
         this.userService.deleteUser(userId).subscribe((res) => {
           console.log(`User delete`);
+          // Update UI List
           this.users = this.users.filter((u) => u._id !== userId);
         });
       }

@@ -1,10 +1,9 @@
 /*
 ============================================
-; Title: user Interface file
+; Title: securityQuestion interface
 ; Author: Professor Krasso
 ; Date:   16 Apr 2021
 ; Modified by: Devan Wong
-; Description: User.interface.ts file
 ;===========================================
 */
 // Creating variables to import into the db.

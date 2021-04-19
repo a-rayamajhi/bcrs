@@ -15,7 +15,7 @@ var router = express.Router();
  * Route Name: Base home page.
  */
 router.get("/", function (req, res, next) {
-  res.render("index", {
+  res.json({
     title: "BCRS",
     description: "Bob's Computers & Repairs",
   });

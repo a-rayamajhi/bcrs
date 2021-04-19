@@ -31,6 +31,7 @@ export class UserDetailsComponent implements OnInit {
   ) {
     this.userId = this.route.snapshot.paramMap.get('userId');
 
+    // FindUserById for pre fill edit view initial values
     this.userService.findUserById(this.userId).subscribe(
       (res) => {
         this.user = res['data'];
@@ -39,6 +40,7 @@ export class UserDetailsComponent implements OnInit {
         console.log(err);
       },
       () => {
+        // setting initial values
         this.form.controls.firstName.setValue(this.user.firstName);
         this.form.controls.lastName.setValue(this.user.lastName);
         this.form.controls.phoneNumber.setValue(this.user.phoneNumber);
@@ -71,6 +73,7 @@ export class UserDetailsComponent implements OnInit {
     updatedUser.address = this.form.controls.address.value;
     updatedUser.email = this.form.controls.email.value;
 
+    // updateUser service method to make network call to update user
     this.userService.updateUser(this.userId, updatedUser).subscribe(
       (res) => {
         this.router.navigate(['/users']);
@@ -80,7 +83,6 @@ export class UserDetailsComponent implements OnInit {
       }
     );
   }
-  // End saveUser
 
   // This is the cancel button.
   cancel() {

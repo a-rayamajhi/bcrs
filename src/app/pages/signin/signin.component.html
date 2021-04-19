@@ -4,12 +4,12 @@
   <div fxFlex="100%" fxFlex.gt-sm="40%">
     <div fxLayout="column">
       <mat-card class="mat-elevation-z0 login-container">
-        <div class="app-title">
-          <span routerLink="/">BCRS</span>
-        </div>
+        <div class="app-title">BCRS</div>
         <mat-card-subtitle class="login-subtitle mat-headline">
           Employee Sign in
         </mat-card-subtitle>
+
+        <!-- Employee Sign in Form -->
         <form
           [formGroup]="form"
           (ngSubmit)="signIn(); form.reset()"
