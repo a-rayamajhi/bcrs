@@ -215,11 +215,11 @@ router.delete('/:id', async (req, res) => {
       console.log(user);
 
       // Scaffold User with request data
-      User.set({
+      user.set({
         isDisabled: true
       });
 
-      User.save(function (err, savedUser) {
+      user.save(function (err, savedUser) {
         // handle mongoDB error
         if (err) {
           console.log(err);
@@ -240,7 +240,7 @@ router.delete('/:id', async (req, res) => {
     // Server error
     console.log(e);
     const deleteUserCatchErrorResponse = new ErrorResponse(500, 'Internal server error', e.message);
-    res.status(500).send(deleteUserCatchErrorResponse.toObject());
+    return res.status(500).send(deleteUserCatchErrorResponse.toObject());
 
   }
 

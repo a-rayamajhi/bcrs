@@ -176,7 +176,7 @@ router.put('/:id', async (req, res) => {
  */
 router.delete('/:id', async (req, res) => {
   try {
-    SecurityQuestion.findOne({ '_id': req.params.id }, function (err, SecurityQuestion) {
+    SecurityQuestion.findOne({ '_id': req.params.id }, function (err, securityQuestion) {
       if (err) {
         // handle mongoDB error
         console.log(err);
@@ -195,11 +195,11 @@ router.delete('/:id', async (req, res) => {
       console.log(SecurityQuestion);
 
       // Scaffold SecurityQuestion with request data
-      SecurityQuestion.set({
+      securityQuestion.set({
         isDisabled: true
       });
 
-      SecurityQuestion.save(function (err, savedSecurityQuestion) {
+      securityQuestion.save(function (err, savedSecurityQuestion) {
         // handle mongoDB error
         if (err) {
           console.log(err);
@@ -218,7 +218,7 @@ router.delete('/:id', async (req, res) => {
     // Server error
     console.log(e);
     const deleteSecurityQuestionCatchErrorResponse = new ErrorResponse(500, 'Internal server error', e.message);
-    res.status(500).send(deleteSecurityQuestionCatchErrorResponse.toObject());
+    return res.status(500).send(deleteSecurityQuestionCatchErrorResponse.toObject());
 
   }
 
