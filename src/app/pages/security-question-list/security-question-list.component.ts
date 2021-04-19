@@ -33,15 +33,14 @@ export class SecurityQuestionListComponent implements OnInit {
   ) {
     // Subscribing to the findAllSecurityQuestion
     this.securityQuestionService.findAllSecurityQuestions().subscribe(
-      (res) => {
+      res => {
         this.securityQuestions = res['data'];
         console.log(this.securityQuestions);
       },
-      (err) => {
+      err => {
         console.log(err);
-      }
-    );
-  }
+      })
+    }
 
   ngOnInit(): void {}
 
@@ -57,21 +56,21 @@ export class SecurityQuestionListComponent implements OnInit {
       data: {
         recordId,
         dialogHeader: 'Delete Record Dialog',
-        dialogBody: `Are you sure you want to delete user ${recordId} ?`,
+        dialogBody: `Are you sure you want to delete security question ${recordId} ?`,
       },
       disableClose: true,
       width: '800px',
     });
 
     // Pop up dialog to delete a user.
-    dialogRef.afterClosed().subscribe((result) => {
+    dialogRef.afterClosed().subscribe(result => {
       if (result === 'confirm') {
         this.securityQuestionService
           .deleteSecurityQuestion(recordId)
-          .subscribe((res) => {
-            console.log(`SecurityQuestion delete`);
+          .subscribe(res => {
+            console.log('Security Question deleted');
             this.securityQuestions = this.securityQuestions.filter(
-              (u) => u._id !== recordId
+              q => q._id !== recordId
             );
           });
       }
