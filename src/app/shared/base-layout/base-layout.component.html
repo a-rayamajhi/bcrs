@@ -14,7 +14,9 @@
 
         <div class="employee-id">
           <button mat-stroked-button [matMenuTriggerFor]="menu">
-            <mat-icon style="font-size: 18px">face</mat-icon>
+            <mat-icon style="font-size: 18px">face</mat-icon>&nbsp;
+            {{ username }}
+            &nbsp; &nbsp;
           </button>
 
           <mat-menu #menu="matMenu" xPosition="before">

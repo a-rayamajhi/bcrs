@@ -18,6 +18,7 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./base-layout.component.css'],
 })
 export class BaseLayoutComponent implements OnInit {
+  username: string;
   /**
    *
    * @param router Router
@@ -25,7 +26,9 @@ export class BaseLayoutComponent implements OnInit {
    */
   constructor(private router: Router, private cookieService: CookieService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.username = this.cookieService.get('session-user');
+  }
 
   /**
    * logOut(): delete session_user cookie and redirect to login page
