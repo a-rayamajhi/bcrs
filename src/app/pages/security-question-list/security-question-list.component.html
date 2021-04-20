@@ -1,0 +1,45 @@
+<!-- This is the security-question-list HTML page -->
+<div fxLayout="column" style="padding: 5% 2%">
+  <mat-card-title style="margin-left: 10px"
+    >Security Questions Configuration</mat-card-title
+  >
+
+  <mat-card-subtitle style="margin-top: 20px">
+    <!-- Create security question create form navigation -->
+    <button
+      mat-button
+      routerLink="/security-questions/create/new"
+      color="accent"
+    >
+      Create
+    </button>
+  </mat-card-subtitle>
+
+  <mat-card-content *ngIf="securityQuestions">
+    <!-- Security Question List -->
+    <table mat-table [dataSource]="securityQuestions" style="width: 100%">
+      <ng-container matColumnDef="question">
+        <th mat-header-cell *matHeaderCellDef>Question</th>
+        <td mat-cell *matCellDef="let element">{{ element.text }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="functions">
+        <th mat-header-cell *matHeaderCellDef>Functions</th>
+        <td mat-cell *matCellDef="let element">
+          <button
+            mat-icon-button
+            routerLink="/security-questions/{{ element._id }}"
+          >
+            <mat-icon color="accent">edit</mat-icon>
+          </button>
+          <button mat-icon-button (click)="delete(element._id)">
+            <mat-icon color="accent">delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </mat-card-content>
+</div>

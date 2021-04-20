@@ -1,0 +1,32 @@
+<!-- This is the security-question-details HTML page -->
+<div fxLayout="column">
+  <mat-card class="mat-elevation-z8">
+    <mat-card-title>Security Question Details</mat-card-title>
+
+    <br />
+
+    <form [formGroup]="form" (ngSubmit)="saveQuestion()" #securityQuestionForm>
+      <mat-card-content>
+        <div fxLayout="column" fxLayoutGap="10px">
+          <mat-form-field>
+            <input
+              type="text"
+              matInput
+              [formControl]="form.controls['text']"
+              placeholder="Question text"
+              (keydown.enter)="saveQuestion()"
+            />
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+
+      <br />
+      <mat-card-actions align="end">
+        <button mat-raised-button (click)="cancel()" color="warn">
+          Cancel
+        </button>
+        <button type="submit" mat-raised-button color="accent">Submit</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>

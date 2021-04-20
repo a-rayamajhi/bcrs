@@ -1,17 +1,35 @@
-<div fxLayout="column">
+<!-- logo -->
+<div class="app-title">
+  <span routerLink="/">BCRS</span>
+</div>
 
+<div fxLayout="column">
   <!-- navigation -->
   <nav fxFlex>
     <mat-toolbar>
       <!-- navbar container -->
       <div class="navbar-container">
-        <!-- logo -->
-        <button class="logo" routerLink="/" mat-button>BCRS</button>
+        <button routerLink="/" mat-button>HOME</button>
+        <button routerLink="/about" mat-button>ABOUT US</button>
 
-        <button class="navbar-link" routerLink="/" mat-button>Home</button>
-        <button class="navbar-link" mat-button>About</button>
+        <div class="employee-id">
+          <button mat-stroked-button [matMenuTriggerFor]="menu">
+            <mat-icon style="font-size: 18px">face</mat-icon>&nbsp;
+            {{ username }}
+            &nbsp; &nbsp;
+          </button>
+
+          <mat-menu #menu="matMenu" xPosition="before">
+            <button routerLink="/users" mat-menu-item>
+              User Configuration
+            </button>
+            <button routerLink="/security-questions" mat-menu-item>
+              Security Question
+            </button>
+            <button mat-menu-item (click)="logOut()">Sign Out</button>
+          </mat-menu>
+        </div>
       </div>
-
     </mat-toolbar>
   </nav>
 
@@ -22,15 +40,55 @@
     </main>
   </div>
 
-  <!-- footer -->
-  <div fxFlex>
-    <footer class="footer">
-      <mat-toolbar class="footer-content">
-        <p>
-          &copy; {{year | date: 'yyyy'}} - Bob's Computer Repair Shop - <a href="https://www.bellevue.edu/" class="bu-link" target="_blank">Bellevue University</a>
-        </p>
-      </mat-toolbar>
-    </footer>
-  </div>
+  <!-- Footer -->
+  <div fxLayout="row wrap" class="footer">
+    <div fxFlex="100%" fxFlex.gt-sm="45%">
+      <div class="footer-tile">
+        <div class="about-title">BCRS</div>
+        <div class="about-content">
+          Your group has been contracted by Bob’s Computer Repair Shop, to
+          rebuild their existing service repair system. This system is
+          responsible for calculating service repair fees, invoicing, and
+          tracking purchases by service. Bob has expressed his concerns for
+          security, account registration, reporting, error handling, and ease of
+          use.
+        </div>
+      </div>
+    </div>
 
+    <div fxFlex="100%" fxFlex.gt-sm="30%">
+      <div class="footer-tile">
+        <div class="about-title">Schedule</div>
+        <div class="about-content">
+          The development of this application will encompass 3 Sprints and 5
+          days. The first 3 days will be for requirements gathering, project
+          planning, and designing. The last 2 days will be for deployment and
+          group presentations.
+        </div>
+      </div>
+    </div>
+
+    <div fxFlex="100%" fxFlex.gt-sm="25%">
+      <div class="footer-tile">
+        <div class="about-title padding-left-2">CONTACT US</div>
+        <div class="about-content">
+          <div class="content-wrapper">
+            <mat-icon color="secondary">chevron_right</mat-icon>
+            <div>support@bcrs.com</div>
+          </div>
+          <div class="content-wrapper">
+            <mat-icon color="secondary">chevron_right</mat-icon>
+            <div>(402) 293-2000</div>
+          </div>
+          <br /><br />
+          <div class="content-wrapper">
+            <div>
+              <div>1000 Galvin Rd S</div>
+              <div>Bellevue, NE 68005</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

@@ -81,8 +81,7 @@ Generate Task Service in shared dir `ng g s shared/task`
 
 ## Deploy:
 
-> `TBD`
-> `TBD`
+
 > `TBD` 
 
 <br /><br />
@@ -91,8 +90,8 @@ Generate Task Service in shared dir `ng g s shared/task`
 
 > Anil Rayamajhi - arayamajhi@my365.bellevue.edu
 >
-> DWong - dwong@my365.bellevue.edu
+> Devan Wong - dwong@my365.bellevue.edu
 >
-> ERPerry - erperry@my365.bellevue.edu
+> Erica Perry - erperry@my365.bellevue.edu
 
 ## <br />
