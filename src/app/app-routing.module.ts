@@ -60,6 +60,14 @@ const routes: Routes = [
         component: AboutComponent
       },
       {
+        path: 'contact',
+        component: ContactComponent,
+      },
+      {
+        path: 'about',
+        component: AboutComponent,
+      },
+      {
         path: 'users',
         component: UserListComponent
       },
