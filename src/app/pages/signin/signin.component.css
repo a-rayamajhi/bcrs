@@ -5,9 +5,13 @@ adjust paper width and gutters */
   background-color: #fff;
   height: 50px;
   font-size: 3rem;
-  color: #212121;
+  color: #4a0000;
   font-weight: 300;
-  text-shadow: 0px 0px 21px #262626;
+  text-shadow: 0px 0px 21px #890000;
+}
+
+.login-subtitle {
+  color: #4a0000;
 }
 
 .login-banner {

@@ -5,9 +5,9 @@
   font-size: 3rem;
   align-items: center;
   justify-content: center;
-  color: #212121;
+  color: #4a0000;
   font-weight: 300;
-  text-shadow: 0px 0px 21px #262626;
+  text-shadow: 0px 0px 21px #890000;
 }
 
 .app-title > span {
@@ -32,7 +32,8 @@
 
 /* dynamic height  */
 .main-content {
-  min-height: calc(100vh - 514px);
+  min-height: calc(100vh - 502px);
+  padding: 5% 3%;
 }
 
 .footer {
@@ -57,7 +58,7 @@
 
 /* footer theme */
 .footer {
-  background-color: #212121;
+  background-color: #4a0000;
   color: #fff;
   padding-top: 4rem;
   padding-bottom: 3rem;
