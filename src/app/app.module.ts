@@ -2,7 +2,7 @@
 ============================================
 ; Title: App.module ts
 ; Author: Professor Krasso
-; Date:   17 Apr 2021
+; Date:   21 Apr 2021
 ; Modified by: Devan Wong, Anil Rayamajhi
 ; Description: App. module.ts page
 ;===========================================
@@ -29,9 +29,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
-
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatListModule } from '@angular/material/list';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatSelectModule } from '@angular/material/select';
 
 // Custom Components
 import { SecurityQuestionCreateComponent } from './pages/security-question-create/security-question-create.component';
@@ -41,7 +44,15 @@ import { SigninComponent } from './pages/signin/signin.component';
 import { UserCreateComponent } from './pages/user-create/user-create.component';
 import { UserDetailsComponent } from './pages/user-details/user-details.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
-import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delete-record-dialog.component'
+import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delete-record-dialog.component';
+import { AboutComponent } from './pages/about/about.component';
+import { ContactComponent } from './pages/contact/contact.component';
+import { ErrorComponent } from './pages/error/error.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { ResetPasswordFormComponent } from './pages/reset-password-form/reset-password-form.component';
+import { VerifySecurityQuestionsFormComponent } from './pages/verify-security-questions-form/verify-security-questions-form.component';
+import { VerifyUsernameFormComponent } from './pages/verify-username-form/verify-username-form.component'
 
 @NgModule({
   declarations: [
@@ -56,7 +67,15 @@ import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delet
     UserCreateComponent,
     UserDetailsComponent,
     UserListComponent,
-    DeleteRecordDialogComponent
+    DeleteRecordDialogComponent,
+    AboutComponent,
+    ContactComponent,
+    ErrorComponent,
+    NotFoundComponent,
+    RegisterComponent,
+    ResetPasswordFormComponent,
+    VerifySecurityQuestionsFormComponent,
+    VerifyUsernameFormComponent
   ],
   imports: [
     BrowserModule,
@@ -74,8 +93,13 @@ import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delet
     MatInputModule,
     MatMenuModule,
     MatDialogModule,
-    MatTableModule
+    MatTableModule,
+    MatStepperModule,
+    MatListModule,
+    MatDividerModule,
+    MatSelectModule
   ],
+  // ErrorInterceptor
   providers: [],
   bootstrap: [AppComponent],
 })
