@@ -2,7 +2,7 @@
 ============================================
 ; Title: App.module ts
 ; Author: Professor Krasso
-; Date:   17 Apr 2021
+; Date:   21 Apr 2021
 ; Modified by: Devan Wong, Anil Rayamajhi
 ; Description: App. module.ts page
 ;===========================================
@@ -29,9 +29,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
-
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatListModule } from '@angular/material/list';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatSelectModule } from '@angular/material/select';
 
 // Custom Components
 import { SecurityQuestionCreateComponent } from './pages/security-question-create/security-question-create.component';
@@ -90,8 +93,13 @@ import { VerifyUsernameFormComponent } from './pages/verify-username-form/verify
     MatInputModule,
     MatMenuModule,
     MatDialogModule,
-    MatTableModule
+    MatTableModule,
+    MatStepperModule,
+    MatListModule,
+    MatDividerModule,
+    MatSelectModule
   ],
+  // ErrorInterceptor
   providers: [],
   bootstrap: [AppComponent],
 })
