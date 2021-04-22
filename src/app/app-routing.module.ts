@@ -24,6 +24,14 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 // Import Guards
 import { AuthGuard } from './shared/auth.guard';
+import { ContactComponent } from './pages/contact/contact.component';
+import { AboutComponent } from './pages/about/about.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { VerifySecurityQuestionsFormComponent } from './pages/verify-security-questions-form/verify-security-questions-form.component';
+import { VerifyUsernameFormComponent } from './pages/verify-username-form/verify-username-form.component';
+import { ResetPasswordFormComponent } from './pages/reset-password-form/reset-password-form.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { ErrorComponent } from './pages/error/error.component';
 
 // Routes Declaration and assign components
 const routes: Routes = [
@@ -34,6 +42,14 @@ const routes: Routes = [
       {
         path: '',
         component: HomeComponent,
+      },
+      {
+        path: 'contact',
+        component: ContactComponent,
+      },
+      {
+        path: 'about',
+        component: AboutComponent,
       },
       {
         path: 'users',
@@ -69,6 +85,30 @@ const routes: Routes = [
       {
         path: 'signin',
         component: SigninComponent,
+      },
+      {
+        path: 'register',
+        component: RegisterComponent,
+      },
+      {
+        path: 'forgot',
+        component: VerifyUsernameFormComponent,
+      },
+      {
+        path: 'verify-security-questions',
+        component: VerifySecurityQuestionsFormComponent,
+      },
+      {
+        path: 'reset-password',
+        component: ResetPasswordFormComponent,
+      },
+      {
+        path: '404',
+        component: NotFoundComponent,
+      },
+      {
+        path: '500',
+        component: ErrorComponent,
       },
     ],
   },
