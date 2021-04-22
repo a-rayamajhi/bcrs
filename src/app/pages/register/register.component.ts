@@ -14,6 +14,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
+// import { SecurityQuestionService } from '../../shared/security-question.service';
 // Imported to use security-question interface.
 import { ISecurityQuestion } from '../../shared/security-question.interface';
 
@@ -23,12 +24,26 @@ import { ISecurityQuestion } from '../../shared/security-question.interface';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  securityQuestion: ISecurityQuestion[];
+  securityQuestions: ISecurityQuestion[];
   form: FormBuilder;
   registrationForm: FormGroup;
   errorMessage: string;
 
-  constructor(private http: HttpClient, private router: Router, private fb: FormBuilder, private cookieService: CookieService) { }
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private fb: FormBuilder,
+    private cookieService: CookieService,
+    // private securityQuestionsService: SecurityQuestionService
+    ) {
+    // Needs to get moved elsewhere
+    this.http.get('/api/security-questions').subscribe(res => {
+      this.securityQuestions = res['data'];
+    }, err => {
+      console.log(err);
+    });
+
+  }
 
   // Form Registration from HTML page.
   ngOnInit(): void {
@@ -109,4 +124,5 @@ export class RegisterComponent implements OnInit {
           this.errorMessage = err;
         })
       }
+
     }
