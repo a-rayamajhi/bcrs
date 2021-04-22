@@ -244,6 +244,15 @@ router.delete('/:id', async (req, res) => {
 
   }
 
+
+/**
+ * FindSelectedSecurityQuestion API : ERICA
+ * Method: GET
+ *
+ * @return
+ */
+
+
 });
 
 module.exports = router;
