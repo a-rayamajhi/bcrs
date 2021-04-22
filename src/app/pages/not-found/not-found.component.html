@@ -1,2 +1,29 @@
-<!-- NotFoundComponent HTML page -->
-<p>not-found works!</p>
+<!-- NOTFOUND HTML. -->
+<div fxLayout="row wrap"
+     fxLayoutAlign="center start">
+  <div fxFlex.gt-sm="55"
+       fxFlex="100"
+  >
+    <!-- This is the mat-card -->
+    <mat-card fxFlex fxLayout="column" class="mat-elevation-z0 main-container" >
+        <!-- This is the mat card content  -->
+        <mat-card-content  fxLayout="column"  fxLayoutAlign="center"  style="justify-content: center">
+            <!-- This is the not found image.  -->
+            <img src="~/../../../../assets/404.png" alt="404 Not Found" width="50%" align="center">
+            <br>
+            <a href="https://harrypotter.fandom.com/wiki/User:Rjd1922">Source: Rjd1922</a> | Edited by: Devan Wong
+            <br>
+        </mat-card-content>
+        <mat-card-actions align="end">
+            <!-- this is the submit button to go to the homepage. if successfull. -->
+            <button
+                mat-raised-button
+                routerLink="/"
+                align="end"
+                color="primary">
+                Back Home
+            </button>
+        </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
