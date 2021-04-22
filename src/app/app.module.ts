@@ -41,7 +41,15 @@ import { SigninComponent } from './pages/signin/signin.component';
 import { UserCreateComponent } from './pages/user-create/user-create.component';
 import { UserDetailsComponent } from './pages/user-details/user-details.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
-import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delete-record-dialog.component'
+import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delete-record-dialog.component';
+import { AboutComponent } from './pages/about/about.component';
+import { ContactComponent } from './pages/contact/contact.component';
+import { ErrorComponent } from './pages/error/error.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { ResetPasswordFormComponent } from './pages/reset-password-form/reset-password-form.component';
+import { VerifySecurityQuestionsFormComponent } from './pages/verify-security-questions-form/verify-security-questions-form.component';
+import { VerifyUsernameFormComponent } from './pages/verify-username-form/verify-username-form.component'
 
 @NgModule({
   declarations: [
@@ -56,7 +64,15 @@ import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delet
     UserCreateComponent,
     UserDetailsComponent,
     UserListComponent,
-    DeleteRecordDialogComponent
+    DeleteRecordDialogComponent,
+    AboutComponent,
+    ContactComponent,
+    ErrorComponent,
+    NotFoundComponent,
+    RegisterComponent,
+    ResetPasswordFormComponent,
+    VerifySecurityQuestionsFormComponent,
+    VerifyUsernameFormComponent
   ],
   imports: [
     BrowserModule,
