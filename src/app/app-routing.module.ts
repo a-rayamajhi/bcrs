@@ -2,7 +2,7 @@
 ============================================
 ; Title: App-routing file
 ; Author: Professor Krasso
-; Date:   21 Apr 2021
+; Date:   22 Apr 2021
 ; Modified by: Devan Wong, Anil rayamajhi
 ; Description: Routes page
 ;===========================================
@@ -41,7 +41,23 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: HomeComponent,
+        component: HomeComponent
+      },
+      {
+        path: 'contact',
+        component: ContactComponent
+      },
+      {
+        path: 'about',
+        component: AboutComponent
+      },
+      {
+        path: 'contact',
+        component: ContactComponent
+      },
+      {
+        path: 'about',
+        component: AboutComponent
       },
       {
         path: 'contact',
@@ -53,30 +69,30 @@ const routes: Routes = [
       },
       {
         path: 'users',
-        component: UserListComponent,
+        component: UserListComponent
       },
       {
         path: 'users/:userId',
-        component: UserDetailsComponent,
+        component: UserDetailsComponent
       },
       {
         path: 'users/create/new',
-        component: UserCreateComponent,
+        component: UserCreateComponent
       },
       {
         path: 'security-questions',
-        component: SecurityQuestionListComponent,
+        component: SecurityQuestionListComponent
       },
       {
         path: 'security-questions/:questionId',
-        component: SecurityQuestionDetailsComponent,
+        component: SecurityQuestionDetailsComponent
       },
       {
         path: 'security-questions/create/new',
-        component: SecurityQuestionCreateComponent,
+        component: SecurityQuestionCreateComponent
       },
     ],
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard]
   },
   {
     path: 'session',
@@ -84,34 +100,34 @@ const routes: Routes = [
     children: [
       {
         path: 'signin',
-        component: SigninComponent,
+        component: SigninComponent
       },
       {
         path: 'register',
-        component: RegisterComponent,
+        component: RegisterComponent
       },
       {
         path: 'forgot',
-        component: VerifyUsernameFormComponent,
+        component: VerifyUsernameFormComponent
       },
       {
         path: 'verify-security-questions',
-        component: VerifySecurityQuestionsFormComponent,
+        component: VerifySecurityQuestionsFormComponent
       },
       {
         path: 'reset-password',
-        component: ResetPasswordFormComponent,
+        component: ResetPasswordFormComponent
       },
       {
         path: '404',
-        component: NotFoundComponent,
+        component: NotFoundComponent
       },
       {
         path: '500',
-        component: ErrorComponent,
-      },
-    ],
-  },
+        component: ErrorComponent
+      }
+    ]
+  }
 ];
 
 @NgModule({
