@@ -3,7 +3,7 @@
 ; Title: session-api.js
 ; Author: Professor Krasso
 ; Date:  21 Apr 2021
-; Modified by: Anil Rayamajhi
+; Modified by: Anil Rayamajhi, Erica Perry
 ;===========================================
 */
 
@@ -161,10 +161,56 @@ router.post('/signin', async (req, res) => {
  /**
  * Method: POST
  *
- * Verify security - ERICA
+ * Verify security 
  * @return
  */
+router.post('/verify/users/:userName/security-questions', async (req, res) => {
+  try {
+    User.findOne({ 'userName': req.body.userName, function (err, user) {
+      if (err) 
+      {
+        console.log(err);
+        const verifySecurityQuestionsMongodbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
+        res.status(500).send(verifySecurityQuestionsMongodbErrorResponse.toObject());
+      }
+      else
+      {
+        console.log(user);
+        const selectedSecurityQuestionOne = user.selectedSecurityQuestions.find(q => q.questionText === req.body.questionText1);
+        const selectedSecurityQuestionTwo = user.selectedSecurityQuestions.find(q2 => q2.questionText === req.body.questionText2);
+        const selectedSecurityQuestionThree = user.selectedSecurityQuestions.find(q3=> q3.questionText === req.body.questionText3);
 
+        const isValidAnswerOne = selectedSecurityQuestions.answerText === req.body.answerText1;
+        const isValidAnswerTwo = selectedSecurityQuestions.answerText === req.body.answerText2;
+        const isValidAnswerThree = selectedSecurityQuestions.answerText === req.body.answerText3;
+      
+      
+      // if password is invalid
+      if (isValidAnswerOne && isValidAnswerTwo && isValidAnswerThree)
+      {
+        console.log(`User, ${user.userName} security question was answered correctly`);
+        const validSecurityQuestionsResponse = new BaseResponse('200', 'success', user);
+        res.json(validSecurityResponse.toObject());
+      }
+      else
+      {
+      console.log(`User ${user.userName} security question was not anwsered correctly`);
+      const invalidSecurityQuestionsResponse = new BaseResponse('200', 'error', user);
+      res.json(invalidSecurityQuestionsResponse.toObject());
+       }
+     } 
+    }
+  })
+
+   }
+   catch (e) 
+   {
+    // Server error
+    console.log(e);
+    const verifySecurityQuestionsCatchErrorResponse = new ErrorResponse('500', 'Internal server error', e.message);
+    res.status(500).send(verifySecurityQuestionsCatchErrorResponse.toObject());
+  }
+});
 
 
 
