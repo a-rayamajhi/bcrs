@@ -25,10 +25,10 @@ export class ResetPasswordFormComponent implements OnInit {
   username: string;
   form: FormGroup;
 
-  constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router, private fb: FormBuilder, private cookieService: CookieService,
+  constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router, private fb: FormBuilder, private cookieService: CookieService){
     this.isAuthenticated = this.route.snapshot.queryParamMap.get('isAuthenticated');
-    this.username = this.route.snapshit.queryParamMap.get('username');
-
+    this.username = this.route.snapshot.queryParamMap.get('username');
+  }
     ngOnInit(){
       this.form = this.fb.group({
         password: [null, Validators.compose([Validators.required])] // password required
@@ -36,19 +36,18 @@ export class ResetPasswordFormComponent implements OnInit {
     }
 resetPassword(){
   this.http.post('/api/session/users/' + this.username + '/reset-password',{
-    password: this.Form.controls['password'].value
+    password: this.form.controls['password'].value
   }).subscribe(res => {
-
-    /**
-     * User is authenticated and we can grant them access
-     */
-    this.cookieService.set('sessoionuser', this.username, 1);
-    this.router.navigate(['/']);
-  }, err => {
-    console.log(err);
-  });
+      /**
+       * User is authenticated and we can grant them access
+       */
+      this.cookieService.set('sessionuser', this.username, 1);
+      this.router.navigate(['/']);
+    }, err => {
+      console.log(err);
+    });
+  }
 }
-
 
 
 
