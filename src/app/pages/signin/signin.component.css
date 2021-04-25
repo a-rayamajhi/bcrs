@@ -45,3 +45,10 @@ adjust paper width and gutters */
   width: 100%;
   padding: 10px 0;
 }
+
+.reset-password {
+  cursor: pointer;
+}
+.reset-password:hover {
+  font-weight: 500;
+}

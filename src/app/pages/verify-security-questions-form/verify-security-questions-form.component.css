@@ -1,1 +1,55 @@
 /* VerifySecurityQuestionsFormComponent CSS page */
+/* verify username page style to align content to center
+adjust paper width and gutters */
+.app-title {
+  display: flex;
+  background-color: #fff;
+  height: 50px;
+  font-size: 3rem;
+  color: #4a0000;
+  font-weight: 300;
+  text-shadow: 0px 0px 21px #890000;
+}
+
+.login-subtitle {
+  color: #4a0000;
+}
+
+.login-banner {
+  background: linear-gradient(
+      to bottom,
+      rgba(255, 167, 0, 0.1) 0,
+      rgba(251, 126, 0, 0.3) 45%,
+      rgba(74, 0, 0, 0.7)
+    ),
+    url(../../../assets/computer-repair.png);
+
+  max-width: 1019px;
+  height: 100%;
+}
+
+.login-wrapper {
+  height: 100vh;
+}
+
+.login-container {
+  margin: 30% 15% auto 2rem;
+}
+
+.login-title {
+  text-align: center;
+  font-size: 30px;
+  /* font-weight: lighter; */
+}
+
+.form-full-width {
+  width: 100%;
+  padding: 10px 0;
+}
+
+.reset-password {
+  cursor: pointer;
+}
+.reset-password:hover {
+  font-weight: 500;
+}
