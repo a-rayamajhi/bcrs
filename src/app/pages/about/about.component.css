@@ -1,1 +1,18 @@
 /* AboutComponent CSS page */
+.footer-content {
+  font-size: 16px;
+  font-weight: lighter;
+  padding-left: 100px;
+  letter-spacing: 3px;
+}
+
+.about-content {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.about-title {
+  font-size: 17px;
+  font-weight: 500;
+}
