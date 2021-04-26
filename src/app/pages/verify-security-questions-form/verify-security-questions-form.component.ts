@@ -45,6 +45,9 @@ export class VerifySecurityQuestionsFormComponent implements OnInit {
         this.selectedSecurityQuestions = res['data'];
         console.log(this.selectedSecurityQuestions);
         console.log(res);
+        if (!this.selectedSecurityQuestions.length) {
+          this.router.navigate(['/']);
+        }
       },
       (err) => console.log(err),
       () => {
