@@ -37,4 +37,15 @@ export class BaseLayoutComponent implements OnInit {
     this.cookieService.delete('session-user');
     this.router.navigate(['session/signin']);
   }
+
+  /**
+   * Check if the router url contains the specified route
+   *
+   * @param {string} route
+   * @returns
+   * @memberof MyComponent
+   */
+  isAboutRoute() {
+    return this.router.url.includes('about');
+  }
 }
