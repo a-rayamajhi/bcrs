@@ -1,0 +1,78 @@
+<!-- VerifySecurityQuestionsFormComponent html page -->
+<div fxLayout="row wrap" class="login-wrapper">
+  <div fxFlex.lt-md="0%" fxFlex.gt-sm="60%" class="login-banner"></div>
+
+  <div fxFlex="100%" fxFlex.gt-sm="40%">
+    <div fxLayout="column">
+      <mat-card class="mat-elevation-z0 login-container">
+        <div class="app-title" mat-button routerLink="/">BCRS</div>
+        <mat-card-subtitle class="login-subtitle mat-headline">
+          Verify Security Questions
+        </mat-card-subtitle>
+
+        <strong *ngIf="errorMessage"
+          ><small style="color: #df546a">{{ errorMessage }}</small></strong
+        >
+        <br /><br />
+        <!-- FORM START. -->
+        <form
+          *ngIf="selectedSecurityQuestions"
+          [formGroup]="form"
+          (ngSubmit)="verifySecurityQuestions()"
+          #usernameForm
+        >
+          <mat-card-content fxLayout="column">
+            <mat-list>
+              <!-- QUESTION/ANSWER 1 -->
+
+              <mat-list-item>
+                <mat-form-field fxFlex>
+                  <input
+                    matInput
+                    [formControl]="form.controls['answerToSecurityQuestion1']"
+                    placeholder="{{ question1 }}"
+                  />
+                </mat-form-field>
+              </mat-list-item>
+              <br />
+              <!-- /1 -->
+              <!-- QUESTION/ANSWER 2 -->
+
+              <mat-list-item>
+                <mat-form-field fxFlex>
+                  <input
+                    matInput
+                    [formControl]="form.controls['answerToSecurityQuestion2']"
+                    placeholder="{{ question2 }}"
+                  />
+                </mat-form-field>
+              </mat-list-item>
+              <!-- /2 --><br />
+              <!-- QUESTION/ANSWER 3 -->
+
+              <mat-list-item>
+                <mat-form-field fxFlex>
+                  <input
+                    matInput
+                    [formControl]="form.controls['answerToSecurityQuestion3']"
+                    placeholder="{{ question3 }}"
+                  />
+                </mat-form-field>
+              </mat-list-item>
+              <!-- /3 -->
+            </mat-list>
+            <br /><br />
+            <!-- SUBMIT -->
+            <div fxFlex fxLayoutAlign="end">
+              <button mat-raised-button color="accent" [disabled]="!form.valid">
+                Submit
+              </button>
+            </div>
+            <!-- /SUBMIT -->
+          </mat-card-content>
+        </form>
+        <!-- /FORM -->
+      </mat-card>
+    </div>
+  </div>
+</div>

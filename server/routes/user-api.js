@@ -2,8 +2,8 @@
 ============================================
 ; Title: User API profile
 ; Author: Professor Krasso
-; Date:  17 Apr 2021
-; Modified by: Devan Wong, Anil Rayamajhi
+; Date:  21 Apr 2021
+; Modified by: Devan Wong, Anil Rayamajhi, Erica Perry
 ; Description: user aoi routes and controller
 ;===========================================
 */
@@ -245,5 +245,42 @@ router.delete('/:id', async (req, res) => {
   }
 
 });
+
+/**
+ * FindSelectedSecurityQuestion API : 
+ * Method: GET
+ *
+ * @return
+ */
+router.get('/:userName/security-questions', async (req, res) => {
+  
+  try {
+    User.findOne({ 'userName': req.params.userName }, function (err, user) {
+      // handle mongoDB error
+      if (err) {
+        console.log(err);
+        const findSelectedSecurityQuestionsMongodbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
+        res.status(500).send(findSelectedSecurityQuestionsMongodbErrorResponse.toObject());
+
+      }
+      else
+      {
+
+      // user object matching params id
+      console.log(user);
+      const findSelectedSecurityQuestionsResponse = new BaseResponse('200', 'Query successful', user.selectedSecurityQuestions);
+      res.json(findSelectedSecurityQuestionsResponse.toObject());
+      }
+
+
+    })
+  } catch (e) {
+    // Server error
+    console.log(e);
+    const findSelectedSecurityQuestionsCatchErrorResponse = new ErrorResponse('500', 'Internal server error', e);
+    res.status(500).send(findSelectedSecurityQuestionsCatchErrorResponse.toObject());
+  }
+})
+
 
 module.exports = router;

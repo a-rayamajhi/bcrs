@@ -1,4 +1,5 @@
-/* login page style to align content to center
+/* RegisterComponent CSS page */
+/* register page style to align content to center
 adjust paper width and gutters */
 .app-title {
   display: flex;
@@ -33,7 +34,7 @@ adjust paper width and gutters */
 }
 
 .login-container {
-  margin: 30% 15% auto 2rem;
+  margin: 10% 15% auto 2rem;
 }
 
 .login-title {
@@ -45,11 +46,4 @@ adjust paper width and gutters */
 .form-full-width {
   width: 100%;
   padding: 10px 0;
-}
-
-.reset-password {
-  cursor: pointer;
-}
-.reset-password:hover {
-  font-weight: 500;
 }

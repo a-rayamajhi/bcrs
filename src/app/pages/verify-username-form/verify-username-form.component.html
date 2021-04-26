@@ -1,0 +1,35 @@
+<!-- verify-username-form.component.s HTML page -->
+
+<div fxLayout="row wrap" class="login-wrapper">
+  <div fxFlex.lt-md="0%" fxFlex.gt-sm="60%" class="login-banner"></div>
+
+  <div fxFlex="100%" fxFlex.gt-sm="40%">
+    <div fxLayout="column">
+      <mat-card class="mat-elevation-z0 login-container">
+        <div class="app-title" mat-button routerLink="/">BCRS</div>
+        <mat-card-subtitle class="login-subtitle mat-headline">
+          Verify User
+        </mat-card-subtitle>
+        <br /><br />
+
+        <!-- Creating a username from field for the user -->
+        <form [formGroup]="form" (ngSubmit)="validateUsername()" #usernameForm>
+          <mat-card-content fxLayout="column">
+            <mat-form-field fxFlex>
+              <input
+                matInput
+                [formControl]="form.controls['username']"
+                placeholder="User Name"
+              />
+            </mat-form-field>
+
+            <br /><br />
+            <div fxFlex fxLayoutAlign="end">
+              <button mat-raised-button color="accent">Submit</button>
+            </div>
+          </mat-card-content>
+        </form>
+      </mat-card>
+    </div>
+  </div>
+</div>

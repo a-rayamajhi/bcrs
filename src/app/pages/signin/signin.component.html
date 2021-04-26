@@ -4,10 +4,11 @@
   <div fxFlex="100%" fxFlex.gt-sm="40%">
     <div fxLayout="column">
       <mat-card class="mat-elevation-z0 login-container">
-        <div class="app-title">BCRS</div>
+        <div class="app-title" mat-button routerLink="/">BCRS</div>
         <mat-card-subtitle class="login-subtitle mat-headline">
           Employee Sign in
         </mat-card-subtitle>
+        <br /><br />
 
         <!-- Employee Sign in Form -->
         <form
@@ -40,13 +41,20 @@
                   />
                   <mat-error *ngIf=""> Password is a required field</mat-error>
                 </mat-form-field>
+                <div style="height: 30px">
+                  <div style="float: right">
+                    <span class="reset-password" routerLink="/session/forgot">
+                      Forgot password?
+                    </span>
+                  </div>
+                </div>
               </mat-card-content>
               <mat-card-actions align="end">
                 <button
                   type="submit"
                   flFlex
                   mat-raised-button
-                  color="primary"
+                  color="accent"
                   [disabled]="!form.valid"
                 >
                   Sign In
@@ -55,6 +63,13 @@
             </mat-card-content>
           </mat-card-content>
         </form>
+
+        <div>
+          First time user?
+          <button mat-button routerLink="/session/register">
+            Create an account
+          </button>
+        </div>
       </mat-card>
     </div>
   </div>
