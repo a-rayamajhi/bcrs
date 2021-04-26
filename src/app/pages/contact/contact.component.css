@@ -1,1 +1,16 @@
 /* ContactComponent CSS  */
+.card-title-icon {
+  border: 2px solid #ffa700;
+  display: flex;
+  width: 50px;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 27px;
+}
+
+.card-wrapper {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
