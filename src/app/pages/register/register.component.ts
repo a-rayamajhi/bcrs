@@ -12,7 +12,12 @@ import { Component, OnInit } from '@angular/core';
 // Imported for the constructor
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 // import { SecurityQuestionService } from '../../shared/security-question.service';
 // Imported to use security-question interface.
@@ -21,7 +26,7 @@ import { ISecurityQuestion } from '../../shared/security-question.interface';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
   securityQuestions: any;
@@ -33,16 +38,17 @@ export class RegisterComponent implements OnInit {
     private http: HttpClient,
     private router: Router,
     private fb: FormBuilder,
-    private cookieService: CookieService,
-    // private securityQuestionsService: SecurityQuestionService
-    ) {
+    private cookieService: CookieService // private securityQuestionsService: SecurityQuestionService
+  ) {
     // Needs to get moved elsewhere
-    this.http.get('/api/security-questions').subscribe(res => {
-      this.securityQuestions = res['data'];
-    }, err => {
-      console.log(err);
-    });
-
+    this.http.get('/api/security-questions').subscribe(
+      (res) => {
+        this.securityQuestions = res['data'];
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 
   // Form Registration from HTML page.
@@ -53,7 +59,7 @@ export class RegisterComponent implements OnInit {
         lastName: new FormControl(null, Validators.required),
         phoneNumber: new FormControl(null, Validators.required),
         address: new FormControl(null, Validators.required),
-        email: new FormControl(null, Validators.required)
+        email: new FormControl(null, Validators.required),
       }),
       securityQuestions: new FormGroup({
         securityQuestion1: new FormControl(null, Validators.required),
@@ -61,17 +67,23 @@ export class RegisterComponent implements OnInit {
         securityQuestion3: new FormControl(null, Validators.required),
         answerToSecurityQuestion1: new FormControl(null, Validators.required),
         answerToSecurityQuestion2: new FormControl(null, Validators.required),
-        answerToSecurityQuestion3: new FormControl(null, Validators.required)
+        answerToSecurityQuestion3: new FormControl(null, Validators.required),
       }),
       credentials: new FormGroup({
         userName: new FormControl(null, Validators.required),
-        password: new FormControl(null, Validators.required)
-      })
+        password: new FormControl(
+          null,
+          Validators.compose([
+            Validators.required,
+            Validators.pattern('^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,100}$'),
+          ])
+        ),
+      }),
     });
   }
 
   // Register Form
-  register(form: any){
+  register(form: any) {
     const contactInformation = form.contactInformation;
     const securityQuestions = form.securityQuestions;
     const credentials = form.credentials;
@@ -79,50 +91,49 @@ export class RegisterComponent implements OnInit {
     const selectedSecurityQuestions = [
       {
         questionText: securityQuestions.securityQuestion1,
-        answerText: securityQuestions.answerToSecurityQuestion1
+        answerText: securityQuestions.answerToSecurityQuestion1,
       },
       {
         questionText: securityQuestions.securityQuestion2,
-        answerText: securityQuestions.answerToSecurityQuestion2
+        answerText: securityQuestions.answerToSecurityQuestion2,
       },
       {
         questionText: securityQuestions.securityQuestion3,
-        answerText: securityQuestions.answerToSecurityQuestion3
-      }
-    ];
-     console.log(securityQuestions);
-
-     this.http.post('/api/session/register', {
-       userName: credentials.userName,
-       password: credentials.password,
-       firstName: contactInformation.firstName,
-       lastName: contactInformation.lastName,
-       phoneNumber: contactInformation.phoneNumber,
-       address: contactInformation.address,
-       email: contactInformation.email,
-       selectedSecurityQuestions: selectedSecurityQuestions
-     }).subscribe(res => {
-       if (res['data'])
-       {
-         /**
-          * User is authenticated and we can grant them access
-          */
-         this.cookieService.set('session-user', credentials.userName, 1);
-         this.router.navigate(['/']);
-       }
-       else
-       {
-         /**
-          * User is not authenticated and we should return the error message
-          */
-         this.errorMessage = res['message'];
-       }
+        answerText: securityQuestions.answerToSecurityQuestion3,
       },
-        err =>
-        {
+    ];
+    console.log(securityQuestions);
+
+    this.http
+      .post('/api/session/register', {
+        userName: credentials.userName,
+        password: credentials.password,
+        firstName: contactInformation.firstName,
+        lastName: contactInformation.lastName,
+        phoneNumber: contactInformation.phoneNumber,
+        address: contactInformation.address,
+        email: contactInformation.email,
+        selectedSecurityQuestions: selectedSecurityQuestions,
+      })
+      .subscribe(
+        (res) => {
+          if (res['data']) {
+            /**
+             * User is authenticated and we can grant them access
+             */
+            this.cookieService.set('session-user', credentials.userName, 1);
+            this.router.navigate(['/']);
+          } else {
+            /**
+             * User is not authenticated and we should return the error message
+             */
+            this.errorMessage = res['message'];
+          }
+        },
+        (err) => {
           console.log(err);
           this.errorMessage = err;
-        })
-      }
-
-    }
+        }
+      );
+  }
+}
