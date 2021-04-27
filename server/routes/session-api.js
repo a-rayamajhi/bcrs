@@ -344,11 +344,7 @@ router.post("/verify/users/:userName/security-questions", async (req, res) => {
       console.log(
         `User ${user.userName} security question was not answered correctly`
       );
-      const invalidSecurityQuestionsResponse = new BaseResponse(
-        "200",
-        "error",
-        user
-      );
+      const invalidSecurityQuestionsResponse = new BaseResponse("200", "error");
       return res.status(200).send(invalidSecurityQuestionsResponse.toObject());
     });
   } catch (e) {
