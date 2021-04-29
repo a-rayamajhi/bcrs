@@ -2,10 +2,19 @@
 ============================================
 ; Title: invoice interface
 ; Author: Professor Krasso
-; Date:   28 Apr 2021
-; Modified by:
+; Date:   29 Apr 2021
+; Modified by: Devan Wong
 ;===========================================
 */
-// DEVAN
+// Import line-items
+import { ILineItem } from './line-item.interface';
+
 export interface IInvoice {
+  userName: string;
+  lineItems: ILineItem[];
+  partsAmount: number;
+  laborAmount: number;
+  lineItemTotal: number;
+  total: number;
+  orderDate: Date;
 }
