@@ -11,6 +11,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+// roleSchema with associated DB collection
 let roleSchema = new Schema ({
   text: {
     type: String,
