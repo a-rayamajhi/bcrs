@@ -1,2 +1,29 @@
 <!-- This is the role-create page -->
-<p>role-create works!</p>
+<div fxLayout="column">
+  <mat-card class="mat-elevation-z8">
+    <!-- This is the title -->
+    <mat-card-title>Create Role</mat-card-title>
+    <br/>
+    <!-- Form begins and runs create function in role-create component -->
+    <form [formGroup]="form" (ngSubmit)="create()" #roleForm>
+      <mat-card-content>
+        <div fxLayout="column" fxLayoutGap="10px">
+          <mat-form-field>
+            <!-- Text input field to insert 'role' -->
+            <input
+              matInput
+              [formControl]="form.controls['text']"
+              placeholder="Role"
+            >
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+      <br />
+      <!-- Submit buttons -->
+      <mat-card-actions align="end">
+        <button mat-raised-button (click)="cancel()" color="warm">Cancel</button>
+        <button mat-raised-button color="accent">Submit</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>
