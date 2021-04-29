@@ -19,6 +19,9 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class InvoiceSummaryDialogComponent implements OnInit {
   invoice: IInvoice;
+  /**
+   * Commented out bc of errorss
+   */
   // constructor(private dialogRef: MatDialog<InvoiceSummaryDialogComponent>, @Inject(MAT_DIALOG_DATA) data) {
   //   this.invoice = data.invoice;
   // }
