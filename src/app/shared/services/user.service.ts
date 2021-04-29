@@ -9,7 +9,7 @@
 */
 
 import { Injectable } from '@angular/core';
-import { IUser } from './user.interface';
+import { IUser } from '../interfaces/user.interface';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -92,4 +92,3 @@ export class UserService {
     return this.http.delete('/api/users/' + userId);
   }
 }
-

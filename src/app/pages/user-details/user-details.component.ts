@@ -2,15 +2,15 @@
 ============================================
 ; Title: User-details components
 ; Author: Professor Krasso
-; Date:   17 Apr 2021
+; Date:   28 Apr 2021
 ; Modified by: Devan Wong, Anil Rayamajhi
 ; Description: user details component.ts
 ;===========================================
 */
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { IUser } from 'src/app/shared/user.interface';
-import { UserService } from './../../shared/user.service';
+import { IUser } from 'src/app/shared/interfaces/user.interface';
+import { UserService } from '../../shared/services/user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -46,6 +46,10 @@ export class UserDetailsComponent implements OnInit {
         this.form.controls.phoneNumber.setValue(this.user.phoneNumber);
         this.form.controls.address.setValue(this.user.address);
         this.form.controls.email.setValue(this.user.email);
+
+        /**
+         * FinalAllRoles() - Devan
+         */
       }
     );
   }

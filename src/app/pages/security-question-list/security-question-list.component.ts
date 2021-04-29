@@ -10,8 +10,8 @@
 
 import { Component, OnInit } from '@angular/core';
 // Imported the values for the security question
-import { ISecurityQuestion } from '../../shared/security-question.interface';
-import { SecurityQuestionService } from '../../shared/security-question.service';
+import { ISecurityQuestion } from '../../shared/interfaces/security-question.interface';
+import { SecurityQuestionService } from '../../shared/services/security-question.service';
 // Imported for constructor
 import { HttpClient } from '@angular/common/http';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';

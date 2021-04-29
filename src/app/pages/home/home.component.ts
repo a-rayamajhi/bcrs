@@ -2,7 +2,7 @@
 ============================================
 ; Title:  Home Component TS.
 ; Author: Professor Krasso
-; Date:   17 Apr 2021
+; Date:   28 Apr 2021
 ; Modified by: Devan Wong
 ; Description: Home component.ts page
 ;===========================================
@@ -19,7 +19,11 @@ export class HomeComponent implements OnInit {
 
   constructor() { }
 
+  // get the username
   ngOnInit(): void {
   }
 
+  /**
+   * Submit form
+   */
 }

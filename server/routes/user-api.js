@@ -2,7 +2,7 @@
 ============================================
 ; Title: User API profile
 ; Author: Professor Krasso
-; Date:  21 Apr 2021
+; Date:  28 Apr 2021
 ; Modified by: Devan Wong, Anil Rayamajhi, Erica Perry
 ; Description: user aoi routes and controller
 ;===========================================
@@ -247,13 +247,13 @@ router.delete('/:id', async (req, res) => {
 });
 
 /**
- * FindSelectedSecurityQuestion API : 
+ * FindSelectedSecurityQuestion API :
  * Method: GET
  *
  * @return
  */
 router.get('/:userName/security-questions', async (req, res) => {
-  
+
   try {
     User.findOne({ 'userName': req.params.userName }, function (err, user) {
       // handle mongoDB error
@@ -281,6 +281,12 @@ router.get('/:userName/security-questions', async (req, res) => {
     res.status(500).send(findSelectedSecurityQuestionsCatchErrorResponse.toObject());
   }
 })
+
+
+ /**
+ * findUserRole - Erica
+ */
+
 
 
 module.exports = router;
