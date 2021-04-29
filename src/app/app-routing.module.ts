@@ -2,7 +2,7 @@
 ============================================
 ; Title: App-routing file
 ; Author: Professor Krasso
-; Date:   22 Apr 2021
+; Date:   29 Apr 2021
 ; Modified by: Devan Wong, Anil rayamajhi
 ; Description: Routes page
 ;===========================================
@@ -23,7 +23,7 @@ import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component'
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 // Import Guards
-import { AuthGuard } from './shared/auth.guard';
+import { AuthGuard } from './shared/guards/auth.guard';
 import { ContactComponent } from './pages/contact/contact.component';
 import { AboutComponent } from './pages/about/about.component';
 import { RegisterComponent } from './pages/register/register.component';
@@ -32,6 +32,11 @@ import { VerifyUsernameFormComponent } from './pages/verify-username-form/verify
 import { ResetPasswordFormComponent } from './pages/reset-password-form/reset-password-form.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ErrorComponent } from './pages/error/error.component';
+import { PurchasesByServiceGraphComponent } from './pages/purchases-by-service-graph/purchases-by-service-graph.component';
+import { RoleGuard } from './shared/guards/role.guard';
+import { RoleListComponent } from './pages/role-list/role-list.component';
+import { RoleDetailsComponent } from './pages/role-details/role-details.component';
+import { RoleCreateComponent } from './pages/role-create/role-create.component';
 
 // Routes Declaration and assign components
 const routes: Routes = [
@@ -44,12 +49,9 @@ const routes: Routes = [
         component: HomeComponent
       },
       {
-        path: 'contact',
-        component: ContactComponent
-      },
-      {
-        path: 'about',
-        component: AboutComponent
+        path: 'purchases-by-service-graph',
+        component: PurchasesByServiceGraphComponent,
+        canActivate: [RoleGuard]
       },
       {
         path: 'contact',
@@ -58,14 +60,6 @@ const routes: Routes = [
       {
         path: 'about',
         component: AboutComponent
-      },
-      {
-        path: 'contact',
-        component: ContactComponent,
-      },
-      {
-        path: 'about',
-        component: AboutComponent,
       },
       {
         path: 'users',
@@ -91,6 +85,18 @@ const routes: Routes = [
         path: 'security-questions/create/new',
         component: SecurityQuestionCreateComponent
       },
+      {
+        path: 'roles',
+        component: RoleListComponent
+      },
+      {
+        path: 'roles/:roleId',
+        component: RoleDetailsComponent
+      },
+      {
+        path: 'roles/create/new',
+        component: RoleCreateComponent
+      }
     ],
     canActivate: [AuthGuard]
   },

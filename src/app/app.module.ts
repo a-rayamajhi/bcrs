@@ -54,6 +54,12 @@ import { ResetPasswordFormComponent } from './pages/reset-password-form/reset-pa
 import { VerifySecurityQuestionsFormComponent } from './pages/verify-security-questions-form/verify-security-questions-form.component';
 import { VerifyUsernameFormComponent } from './pages/verify-username-form/verify-username-form.component'
 import { ErrorInterceptor } from './shared/error.interceptor';
+import { ChartModule } from 'primeng/chart';
+import { RoleListComponent } from './pages/role-list/role-list.component';
+import { RoleCreateComponent } from './pages/role-create/role-create.component';
+import { RoleDetailsComponent } from './pages/role-details/role-details.component';
+import { InvoiceSummaryDialogComponent } from './dialogs/invoice-summary-dialog.component';
+import { PurchasesByServiceGraphComponent } from './pages/purchases-by-service-graph/purchases-by-service-graph.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +82,12 @@ import { ErrorInterceptor } from './shared/error.interceptor';
     RegisterComponent,
     ResetPasswordFormComponent,
     VerifySecurityQuestionsFormComponent,
-    VerifyUsernameFormComponent
+    VerifyUsernameFormComponent,
+    RoleListComponent,
+    RoleCreateComponent,
+    RoleDetailsComponent,
+    InvoiceSummaryDialogComponent,
+    PurchasesByServiceGraphComponent
   ],
   imports: [
     BrowserModule,
@@ -98,7 +109,8 @@ import { ErrorInterceptor } from './shared/error.interceptor';
     MatStepperModule,
     MatListModule,
     MatDividerModule,
-    MatSelectModule
+    MatSelectModule,
+    ChartModule
   ],
   // ErrorInterceptor
   providers: [

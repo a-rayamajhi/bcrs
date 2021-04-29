@@ -2,16 +2,18 @@
 ============================================
 ; Title: User-details components
 ; Author: Professor Krasso
-; Date:   17 Apr 2021
+; Date:  29 Apr 2021
 ; Modified by: Devan Wong, Anil Rayamajhi
 ; Description: user details component.ts
 ;===========================================
 */
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { IUser } from 'src/app/shared/user.interface';
-import { UserService } from './../../shared/user.service';
+import { IUser } from 'src/app/shared/interfaces/user.interface';
+import { UserService } from '../../shared/services/user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { RoleService } from 'src/app/shared/services/role.service';
+import { IRole } from '../../shared/interfaces/role.interface';
 
 @Component({
   selector: 'app-user-details',
@@ -22,12 +24,14 @@ export class UserDetailsComponent implements OnInit {
   user: IUser;
   userId: string;
   form: FormGroup;
+  roles: IRole[];
 
   constructor(
     private router: Router,
     private userService: UserService,
     private fb: FormBuilder,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private roleService: RoleService
   ) {
     this.userId = this.route.snapshot.paramMap.get('userId');
 
@@ -46,9 +50,19 @@ export class UserDetailsComponent implements OnInit {
         this.form.controls.phoneNumber.setValue(this.user.phoneNumber);
         this.form.controls.address.setValue(this.user.address);
         this.form.controls.email.setValue(this.user.email);
-      }
-    );
-  }
+        this.form.controls.role.setValue(this.user.role['role']);
+        /**
+         * FindAllRoles
+         */
+        this.roleService.findAllRoles().subscribe(
+          (res) => {
+          this.roles = res['data'];
+        },
+        (err) => {
+          console.log(err);
+        })
+      });
+    }
 
   ngOnInit(): void {
     // Adding Validators to the form
@@ -57,10 +71,8 @@ export class UserDetailsComponent implements OnInit {
       lastName: [null, Validators.compose([Validators.required])],
       phoneNumber: [null, Validators.compose([Validators.required])],
       address: [null, Validators.compose([Validators.required])],
-      email: [
-        null,
-        Validators.compose([Validators.required, Validators.email]),
-      ],
+      email: [null, Validators.compose([Validators.required, Validators.email])],
+      role: [null, Validators.compose([Validators.required])]
     });
   }
 
@@ -72,6 +84,7 @@ export class UserDetailsComponent implements OnInit {
     updatedUser.phoneNumber = this.form.controls.phoneNumber.value;
     updatedUser.address = this.form.controls.address.value;
     updatedUser.email = this.form.controls.email.value;
+    updatedUser.role = this.form.controls.role.value;
 
     // updateUser service method to make network call to update user
     this.userService.updateUser(this.userId, updatedUser).subscribe(
