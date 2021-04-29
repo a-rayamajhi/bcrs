@@ -2,13 +2,17 @@
 ============================================
 ; Title:  Role Api
 ; Author: Professor Krasso
-; Date:   28 Apr 2021
+; Date:   29 Apr 2021
 ; Modified by: Devan Wong, Erica Perry, Anil Rayamajhi
 ; Description: Creating role apis
 ;===========================================
 */
 // Require Statements
+const express = require('express');
 const Role = require('../models/role');
+const User = require('../models/user');
+const ErrorResponse = require('../services/error-response');
+const BaseResponse = require('../services/base-response');
 
 
 const router = express.Router();

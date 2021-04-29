@@ -2,7 +2,7 @@
 ============================================
 ; Title: User API profile
 ; Author: Professor Krasso
-; Date:  28 Apr 2021
+; Date:  29 Apr 2021
 ; Modified by: Devan Wong, Anil Rayamajhi, Erica Perry
 ; Description: user aoi routes and controller
 ;===========================================
@@ -162,6 +162,11 @@ router.put('/:id', async (req, res) => {
           address: req.body.address,
           email: req.body.email
         })
+
+        user.role.set({
+          role: req.body.role
+        });
+
         user.save(function (err, savedUser) {
           // handle mongoDB error
           if (err) {
