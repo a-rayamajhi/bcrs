@@ -9,6 +9,9 @@
 */
 
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { RoleService } from 'src/app/shared/services/role.service';
+import { IRole } from '../../shared/interfaces/role.interface';
 
 @Component({
   selector: 'app-role-list',
@@ -16,15 +19,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./role-list.component.css']
 })
 export class RoleListComponent implements OnInit {
-
-  constructor() {
+  roles: IRole[];
+  displayedColumns = ['role', 'functions'];
+  constructor(private dialog: MatDialog, private roleService: RoleService) {
     /**
-     * findAllRoles() - Devan
+     * findAllRoles
      */
+    this.roleService.findAllRoles().subscribe(res => {
+      this.roles = res['data'];
+    }, err => {
+      console.log(err)
+    })
   }
+
 
   ngOnInit(): void {
   }
+
   /**
    * Delete roleId - Anil
    */
