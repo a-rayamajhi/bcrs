@@ -3,14 +3,14 @@
 ; Title:  Role Details
 ; Author: Professor Krasso
 ; Date:   29 Apr 2021
-; Modified by: Devan Wong
+; Modified by: Devan Wong, Erica Perry
 ; Description: role-details component page
 ;===========================================
 */
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RoleService } from 'src/app/shared/services/role.service';
 import { IRole } from 'src/app/shared/interfaces/role.interface';
 
@@ -35,10 +35,13 @@ export class RoleDetailsComponent implements OnInit {
    */
 
    }
+// Form builder - Erica
 
-  ngOnInit(): void {
-    // Form builder
-  }
+    ngOnInit(): void {
+      this.form = this.fb.group({
+        text: [null, Validators.compose([Validators.required])]
+      });
+    }
 
   /**
    * Save function

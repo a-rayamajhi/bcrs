@@ -7,5 +7,7 @@
 ;===========================================
 */
 // ERICA
-export interface ILineItem {
+export interface LineItem {
+    title: string;
+    price: number;
 }
