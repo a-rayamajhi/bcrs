@@ -15,6 +15,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class InvoiceService {
+  findPurchasesByServiceGraph: any;
 
   constructor(private http: HttpClient) { }
 
