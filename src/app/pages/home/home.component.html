@@ -2,8 +2,111 @@
 <div fxLayout="column" class="main-welcome">
   <h1 class="title">
     Welcome to WEB 450's - Bob's Computer Repair Shop <br />
-    <span class="subtitle">
-      Pay close attention to the requirements, double and triple check the files for code attribution, and do not wait unitl the last minute to begin working on each item.
-    </span>
+    <span class="subtitle"> Service Repair Forms </span>
   </h1>
 </div>
+
+<!-- <mat-card class="mat-elecation-z0">
+  <form
+    #serviceRepairForm="ngForm"
+    (ngSubmit)="submit(serviceRepairForm.value); serviceRepairForm.reset()"
+  >
+    <mat-card-content>
+      <div fcLayout="column">
+        <h4>Services</h4>
+        <div ngModelGroup="checkGroup" *ngFor="let service of services">
+          <mat-checkbox name="{{ service.id }}" ngModel>
+            {{ service.title }} ({{ service.price | currency }})
+          </mat-checkbox>
+          <br />
+        </div>
+      </div>
+
+      <br /><br />
+      <mat-divider></mat-divider>
+      <br /><br />
+
+      <div fxLayout="column">
+        <h4 fxFlex>Standard Fees</h4>
+        <mat-form-field fxFlex>
+          <input matInput name="parts" ngModel="" placeholder="Parts" />
+        </mat-form-field>
+        <mat-form-field fxFlex>
+          <input
+            matInput
+            name="labor"
+            ngModel=""
+            placeholder="Labor @ 50.00/hr"
+          />
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+
+    <br /><br />
+    <mat-divider></mat-divider>
+    <br /><br />
+    <mat-card-actions align="end">
+      <button mat-raised-button type="reset" color="warn">Cancel</button>
+      <button
+        mat-raised-button
+        color="accent"
+        [disabled]="!serviceRepairForm.valid"
+      >
+        Submit
+      </button>
+    </mat-card-actions>
+  </form>
+</mat-card> -->
+
+<mat-card class="mat-elevation-z0" style="max-width: 1000px; margin: 2rem auto">
+  <form #serviceRepairForm="ngForm">
+    <mat-horizontal-stepper #stepper>
+      <mat-step label="Services">
+        <div fxLayout="column" style="margin: 3rem">
+          <div ngModelGroup="checkGroup" *ngFor="let service of services">
+            <mat-checkbox name="{{ service.id }}" ngModel>
+              {{ service.title }} ({{ service.price | currency }})
+            </mat-checkbox>
+            <br />
+            <br />
+          </div>
+        </div>
+        <mat-card-actions align="end">
+          <button mat-button matStepperNext>Next</button>
+        </mat-card-actions>
+      </mat-step>
+      <mat-step label="Standard Fees">
+        <div fxLayout="column" style="margin: 3rem">
+          <h4 fxFlex>Standard Fees</h4>
+          <mat-form-field fxFlex>
+            <input matInput name="parts" ngModel="" placeholder="Parts" />
+          </mat-form-field>
+          <mat-form-field fxFlex>
+            <input
+              matInput
+              name="labor"
+              ngModel=""
+              placeholder="Labor @ 50.00/hr"
+            />
+          </mat-form-field>
+        </div>
+        <mat-card-actions align="end">
+          <button mat-button matStepperPrevious>Back</button>
+          <button
+            mat-raised-button
+            color="accent"
+            (click)="
+              submit(serviceRepairForm.value);
+              serviceRepairForm.reset();
+              stepper.reset()
+            "
+            color="accent"
+            type="submit"
+          >
+            Submit
+          </button>
+        </mat-card-actions>
+      </mat-step>
+    </mat-horizontal-stepper>
+  </form>
+</mat-card>

@@ -2,8 +2,8 @@
 ============================================
 ; Title: role service file
 ; Author: Professor Krasso
-; Date:   29 Apr 2021
-; Modified by: Devan Wong
+; Date:   30 Apr 2021
+; Modified by: Devan Wong, Anil Rayamajhi
 ; Description: role service file
 ;===========================================
 */
@@ -13,11 +13,10 @@ import { HttpClient } from '@angular/common/http';
 import { IRole } from '../interfaces/role.interface';
 import { Observable } from 'rxjs';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RoleService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   /**
    *
@@ -29,14 +28,27 @@ export class RoleService {
     return this.http.get('/api/roles');
   }
 
-
-   /**
-   * findById() - ANIL
+  /**
+   * @param roleId string
+   * @returns Observable
+   *
+   * findById API
    */
+  findRoleById(roleId: string): Observable<any> {
+    return this.http.get('/api/roles/' + roleId);
+  }
 
-   /**
-   * createRole() - ERICA
+  /**
+   * @param roleId string
+   * @returns Observable
+   *
+   * createRole API
    */
+  createRole(role: IRole): Observable<any> {
+    return this.http.post('/api/roles', {
+      text: role.text,
+    });
+  }
 
   /**
    *
@@ -47,15 +59,26 @@ export class RoleService {
    * UpdateRole API
    */
   updateRole(roleId: string, role: IRole): Observable<any> {
-    return this.http.put('/api/roles' + roleId, {
-      text: role.text
-    })
+    return this.http.put('/api/roles/' + roleId, {
+      text: role.text,
+    });
   }
-   /**
-   * deleteRole() - ANIL
+  /**
+   * @param roleId string
+   * @returns Observable
+   *
+   * deleteRole API
    */
+  deleteRole(roleId: string): Observable<any> {
+    return this.http.delete('/api/roles/' + roleId);
+  }
 
-   /**
-   * findUserRole() - ERICA
+  /**
+   * @param userName string
+   *
+   * findUserRole API
    */
+  findUserRole(userName: string): Observable<any> {
+    return this.http.get('/api/users/' + userName + '/roles');
+  }
 }

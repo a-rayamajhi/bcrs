@@ -29,12 +29,17 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
-import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpClientModule,
+  HTTP_INTERCEPTORS,
+} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 // Custom Components
 import { SecurityQuestionCreateComponent } from './pages/security-question-create/security-question-create.component';
@@ -52,7 +57,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ResetPasswordFormComponent } from './pages/reset-password-form/reset-password-form.component';
 import { VerifySecurityQuestionsFormComponent } from './pages/verify-security-questions-form/verify-security-questions-form.component';
-import { VerifyUsernameFormComponent } from './pages/verify-username-form/verify-username-form.component'
+import { VerifyUsernameFormComponent } from './pages/verify-username-form/verify-username-form.component';
 import { ErrorInterceptor } from './shared/error.interceptor';
 import { ChartModule } from 'primeng/chart';
 import { RoleListComponent } from './pages/role-list/role-list.component';
@@ -87,7 +92,7 @@ import { PurchasesByServiceGraphComponent } from './pages/purchases-by-service-g
     RoleCreateComponent,
     RoleDetailsComponent,
     InvoiceSummaryDialogComponent,
-    PurchasesByServiceGraphComponent
+    PurchasesByServiceGraphComponent,
   ],
   imports: [
     BrowserModule,
@@ -110,11 +115,12 @@ import { PurchasesByServiceGraphComponent } from './pages/purchases-by-service-g
     MatListModule,
     MatDividerModule,
     MatSelectModule,
-    ChartModule
+    ChartModule,
+    MatCheckboxModule,
   ],
   // ErrorInterceptor
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })

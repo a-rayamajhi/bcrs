@@ -2,53 +2,68 @@
 ============================================
 ; Title:  Invoice Summary Dialog
 ; Author: Professor Krasso
-; Date:   29 Apr 2021
-; Modified by: Erica Perry
+; Date:   30 Apr 2021
+; Modified by: Erica Perry, Anil Rayamajhi
 ; Description: Invoice Summary Dialog component page
 ;===========================================
 -->
 
-<h2 style="text-align: center;" mat-dailog-title>{{invoice.userName}} please confirm the order</h2>
+<h2 style="text-align: center" mat-dialog-title>
+  {{ invoice.userName }} please confirm the order
+</h2>
 
-<div mat-dialog-comtent>
-    <h3>Order date{{ invoice.orderDate | date}}</h3>
-    <mat-divider></mat-divider>
-    <!-- displays the services the user has choosen and price-->
-    <h4>Services</h4>
-    <div *ngFor="let LineItem of invoice.lineItems">
-        <mat-list>
-            {{lineItem.title}};
-            <div fxFlex></div>
-            {{lineItem.price | currency}}
-            </mat-list-item>
-        </mat-list>
-    </div>
-    <mat-divider></mat-divider>
-    <!-- standard fees for the services the user has choosen with price, parts, labor-->
-    <h4>Standard Fees</h4>
+<div mat-dialog-content>
+  <h3>Order date: {{ invoice.orderDate | date }}</h3>
+  <mat-divider></mat-divider>
+  <!-- displays the services the user has chosen and price-->
+  <br />
+  <h4>Services</h4>
+  <div *ngFor="let lineItem of invoice.lineItems">
     <mat-list>
-        <mat-list-item>
-            Parts:
-            <div fxFlex></div>
-            {{invoice.partsAmount | currency}}
-        </mat-list-item>
+      <mat-list-item>
+        {{ lineItem.title }}:
+        <div fxFlex></div>
+        {{ lineItem.price | currency }}
+      </mat-list-item>
     </mat-list>
-    Labor:
-    <div fxFlex></div>
-    {{invoice.partsAmount | currency}}
+  </div>
+  <br />
+  <mat-divider></mat-divider>
+  <!-- standard fees for the services the user has chosen with price, parts, labor-->
+  <br />
+  <h4>Standard Fees</h4>
+  <mat-list>
+    <mat-list-item>
+      Parts:
+      <div fxFlex></div>
+      {{ invoice.partsAmount | currency }}
     </mat-list-item>
-    </mat-list>
-    <br />
+  </mat-list>
+  <mat-list>
+    <mat-list-item>
+      Labor:
+      <div fxFlex></div>
+      {{ invoice.laborAmount | currency }}
+    </mat-list-item>
+  </mat-list>
+  <br />
 
-    <mat-divider></mat-divider>
-    <p fxLayoutAlign="end">
-        Total charges: {{invoice.total | currency}}
-    </p>
+  <mat-divider></mat-divider>
+  <br />
+  <p fxLayoutAlign="end">Total charges: {{ invoice.total | currency }}</p>
 </div>
 <br />
 <!-- creating a cancel and confirm button for users after looking over the orders-->
 <div mat-dialog-actions align="end">
-    <button mat-raised-button matDialogClose="cancel" color="primary">Cancel</button>
-    <button mat-raised-button matDialogClose="confirm" color="accent" cdkFocusInitial>Confirm Order</button>
-
+  <button mat-raised-button matDialogClose="cancel" color="primary">
+    Cancel
+  </button>
+  <button
+    mat-raised-button
+    matDialogClose="confirm"
+    color="accent"
+    cdkFocusInitial
+  >
+    Confirm Order
+  </button>
 </div>

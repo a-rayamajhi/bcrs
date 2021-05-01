@@ -56,13 +56,15 @@ export class UserDetailsComponent implements OnInit {
          */
         this.roleService.findAllRoles().subscribe(
           (res) => {
-          this.roles = res['data'];
-        },
-        (err) => {
-          console.log(err);
-        })
-      });
-    }
+            this.roles = res['data'];
+          },
+          (err) => {
+            console.log(err);
+          }
+        );
+      }
+    );
+  }
 
   ngOnInit(): void {
     // Adding Validators to the form
@@ -71,8 +73,11 @@ export class UserDetailsComponent implements OnInit {
       lastName: [null, Validators.compose([Validators.required])],
       phoneNumber: [null, Validators.compose([Validators.required])],
       address: [null, Validators.compose([Validators.required])],
-      email: [null, Validators.compose([Validators.required, Validators.email])],
-      role: [null, Validators.compose([Validators.required])]
+      email: [
+        null,
+        Validators.compose([Validators.required, Validators.email]),
+      ],
+      role: [null, Validators.compose([Validators.required])],
     });
   }
 
@@ -85,7 +90,7 @@ export class UserDetailsComponent implements OnInit {
     updatedUser.address = this.form.controls.address.value;
     updatedUser.email = this.form.controls.email.value;
     updatedUser.role = this.form.controls.role.value;
-
+    console.log(updatedUser);
     // updateUser service method to make network call to update user
     this.userService.updateUser(this.userId, updatedUser).subscribe(
       (res) => {

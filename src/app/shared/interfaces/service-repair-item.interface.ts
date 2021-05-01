@@ -2,13 +2,13 @@
 ============================================
 ; Title: ServiceRepairItem interface
 ; Author: Professor Krasso
-; Date:   17 Apr 2021
-; Modified by: Erica Perry
+; Date:   30 Apr 2021
+; Modified by: Erica Perry, Anil Rayamajhi
 ;===========================================
 */
-// Erica
-export interface ServiceRepairItem {
-    id: string;
-    title: string;
-    price: number;
+
+export interface IServiceRepairItem {
+  id: string;
+  title: string;
+  price: number;
 }
