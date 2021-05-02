@@ -11,6 +11,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { RoleService } from '../services/role.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-base-layout',
@@ -35,6 +37,7 @@ export class BaseLayoutComponent implements OnInit {
    */
   logOut() {
     this.cookieService.delete('session-user');
+    this.cookieService.delete('user-role');
     this.router.navigate(['session/signin']);
   }
 
@@ -47,5 +50,15 @@ export class BaseLayoutComponent implements OnInit {
    */
   isAboutRoute() {
     return this.router.url.includes('about');
+  }
+
+  /**
+   * Check if user has Admin role
+   *
+   * @returns boolean
+   */
+  isAdmin() {
+    const role = this.cookieService.get('user-role');
+    return role === 'admin';
   }
 }

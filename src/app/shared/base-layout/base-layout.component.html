@@ -27,8 +27,13 @@
             <button routerLink="/security-questions" mat-menu-item>
               Security Question
             </button>
-            <button routerLink="/roles" mat-menu-item>
-              Roles
+            <button routerLink="/roles" mat-menu-item>Roles</button>
+            <button
+              *ngIf="isAdmin()"
+              routerLink="/purchases-by-service-graph"
+              mat-menu-item
+            >
+              Purchases By Graph
             </button>
             <button mat-menu-item (click)="logOut()">Sign Out</button>
           </mat-menu>

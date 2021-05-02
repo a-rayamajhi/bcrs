@@ -372,7 +372,7 @@ router.get("/:userName/role", async (req, res) => {
           "Query successful",
           user.role
         );
-        res.status(findUserRoleResponse.toObject());
+        res.status(200).send(findUserRoleResponse.toObject());
       }
     });
   } catch {

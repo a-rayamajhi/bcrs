@@ -23,9 +23,8 @@ export class PurchasesByServiceGraphComponent implements OnInit {
 
   constructor(private invoiceService: InvoiceService) {
     //Call the purchases graph API
-
-    this.invoiceService.findPurchasesByServiceGraph().subscribe((res) => {
-      //map the response data to the purchaces varible
+    invoiceService.findPurchaseByServiceGraph().subscribe((res) => {
+      //map the response data to the purchases variable
       this.purchase = res['data'];
 
       //loop over the purchases to split out the services and item count

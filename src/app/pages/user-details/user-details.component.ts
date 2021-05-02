@@ -1,3 +1,4 @@
+import { CookieService } from 'ngx-cookie-service';
 /*
 ============================================
 ; Title: User-details components
@@ -23,6 +24,7 @@ import { IRole } from '../../shared/interfaces/role.interface';
 export class UserDetailsComponent implements OnInit {
   user: IUser;
   userId: string;
+  userName: string;
   form: FormGroup;
   roles: IRole[];
 
@@ -31,9 +33,11 @@ export class UserDetailsComponent implements OnInit {
     private userService: UserService,
     private fb: FormBuilder,
     private route: ActivatedRoute,
-    private roleService: RoleService
+    private roleService: RoleService,
+    private cookieService: CookieService
   ) {
     this.userId = this.route.snapshot.paramMap.get('userId');
+    this.userName = cookieService.get('session-user');
 
     // FindUserById for pre fill edit view initial values
     this.userService.findUserById(this.userId).subscribe(
@@ -94,6 +98,9 @@ export class UserDetailsComponent implements OnInit {
     // updateUser service method to make network call to update user
     this.userService.updateUser(this.userId, updatedUser).subscribe(
       (res) => {
+        if (res['data'].userName === this.userName) {
+          this.cookieService.set('user-role', res['data']['role']['role'], 1);
+        }
         this.router.navigate(['/users']);
       },
       (err) => {

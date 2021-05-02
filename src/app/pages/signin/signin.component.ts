@@ -57,6 +57,7 @@ export class SigninComponent implements OnInit {
           if (res['data'].userName) {
             // authenticated, set cookie and navigate to dashboard
             this.cookieService.set('session-user', res['data'].userName, 1);
+            this.cookieService.set('user-role', res['data']['role']['role'], 1);
             this.router.navigate(['/']);
           }
         },
