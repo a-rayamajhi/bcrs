@@ -3,7 +3,7 @@
 ; Title: PurchasesByServiceGraphComponent
 ; Author: Professor Krasso
 ; Date:   29 Apr 2021
-; Modified by: Erica Perry
+; Modified by: Erica Perry, Devan Wong
 ;===========================================
 */
 
@@ -16,43 +16,43 @@ import { InvoiceService } from 'src/app/shared/services/invoice.service';
   styleUrls: ['./purchases-by-service-graph.component.css'],
 })
 export class PurchasesByServiceGraphComponent implements OnInit {
-  purchase: any;
+  purchases: any;
   data: any;
   itemCount = [];
   labels = [];
 
   constructor(private invoiceService: InvoiceService) {
     //Call the purchases graph API
-    invoiceService.findPurchaseByServiceGraph().subscribe((res) => {
+    this.invoiceService.findPurchaseByServiceGraph().subscribe((res) => {
       //map the response data to the purchases variable
-      this.purchase = res['data'];
+      this.purchases = res['data'];
 
       //loop over the purchases to split out the services and item count
-      for (const item of this.purchase) {
+      for (const item of this.purchases) {
         this.labels.push(item._id.title);
         this.itemCount.push(item.count);
       }
       // build the object literal for the primeNG bar graph
       this.data = {
         labels: this.labels, // label for services
-        database: [
+        datasets: [
           //graph object
           {
             backgroundColor: [
-              '#ED0A3F',
-              '#ED0A3F',
-              '#ED0A3F',
-              '#ED0A3F',
-              '#ED0A3F',
-              '#ED0A3F',
+              '#740001',
+              '#AE0001',
+              '#D3A625',
+              '#EEBA30',
+              '#000000',
+              '#C0C0C0',
             ],
             hoverBackgroundColor: [
-              '#ED0A3F',
-              '#ED0A3F',
-              '#ED0A3F',
-              '#ED0A3F',
-              '#ED0A3F',
-              '#ED0A3F',
+              '#450101',
+              '#7d0001',
+              '#9c7b1c',
+              '#a88322',
+              '#403f3f',
+              '#9c9a9a',
             ],
             data: this.itemCount,
           },
