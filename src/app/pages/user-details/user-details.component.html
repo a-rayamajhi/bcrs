@@ -25,6 +25,16 @@
             />
           </mat-form-field>
           <mat-form-field>
+            <mat-select
+              [formControl]="form.controls['role']"
+              placeholder="Role"
+            >
+              <mat-option *ngFor="let role of roles" [value]="role.text">{{
+                role.text
+              }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
             <input
               type="text"
               matInput
@@ -53,7 +63,7 @@
 
       <br />
       <mat-card-actions align="end">
-        <button mat-raised-button (click)="cancel()"  color="primary">
+        <button mat-raised-button (click)="cancel()" color="primary">
           Cancel
         </button>
         <button type="submit" mat-raised-button color="accent">Submit</button>

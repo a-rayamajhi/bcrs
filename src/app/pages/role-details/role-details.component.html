@@ -1,0 +1,39 @@
+<!--
+============================================
+; Title: Role- details
+; Author: Professor Krasso
+; Date:   17 Apr 2021
+; Modified by: Devan Wong, Anil Rayamajhi
+; Description: HTML page created for the details for
+; the users roles.
+;===========================================
+-->
+
+<div fxLayout="column">
+  <!-- creating a mat card title for the role details-->
+  <mat-card class="mat-elevation-z8">
+    <mat-card-title> Role Details</mat-card-title>
+
+    <br />
+    <form [formGroup]="form" (ngSubmit)="save()" #roleForm>
+      <mat-card-content>
+        <mat-form-field>
+          <input
+            matInput
+            [formControl]="form.controls['text']"
+            placeholder="Role"
+          />
+        </mat-form-field>
+      </mat-card-content>
+
+      <br />
+      <mat-card-actions align="end">
+        <!-- creating two buttons, so the that a user has the option to submit or cancel-->
+        <button mat-raised-button color="warn" (click)="cancel()">
+          Cancel
+        </button>
+        <button mat-raised-button color="accent">Submit</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>

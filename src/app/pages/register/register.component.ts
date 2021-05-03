@@ -21,7 +21,7 @@ import {
 import { CookieService } from 'ngx-cookie-service';
 // import { SecurityQuestionService } from '../../shared/security-question.service';
 // Imported to use security-question interface.
-import { ISecurityQuestion } from '../../shared/security-question.interface';
+import { ISecurityQuestion } from '../../shared/interfaces/security-question.interface';
 
 @Component({
   selector: 'app-register',

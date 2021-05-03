@@ -16,4 +16,6 @@ export interface IUser {
   phoneNumber: string;
   address: string;
   email: string;
+  // Added dwong for user details page.
+  role: string;
 }
