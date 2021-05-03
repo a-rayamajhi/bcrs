@@ -34,9 +34,7 @@
               "node_modules/primeng/resources/themes/saga-blue/theme.css",
               "node_modules/primeng/resources/primeng.min.css"
             ],
-            "scripts": [
-              "node_modules/chart.js/dist/chart.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
