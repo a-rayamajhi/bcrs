@@ -114,16 +114,16 @@ export class HomeComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'confirm') {
         console.log('Invoice saved');
-      }
 
-      this.invoiceService.createInvoice(invoice.userName, invoice).subscribe(
-        (res) => {
-          this.router.navigate(['/']);
-        },
-        (err) => {
-          console.log(err);
-        }
-      );
+        this.invoiceService.createInvoice(invoice.userName, invoice).subscribe(
+          (res) => {
+            this.router.navigate(['/']);
+          },
+          (err) => {
+            console.log(err);
+          }
+        );
+      }
     });
   }
 }
