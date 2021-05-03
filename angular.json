@@ -16,6 +16,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": ["chart.js"],
             "outputPath": "dist/bcrs",
             "index": "src/index.html",
             "main": "src/main.ts",
