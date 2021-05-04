@@ -80,6 +80,15 @@ router.get("/:id", async (req, res) => {
           );
           res.status(500).send(findByIdMongodbErrorResponse.toObject());
         } else {
+          if (!securityQuestion) {
+            console.log("Question not found");
+            const notFoundResponse = new BaseResponse(
+              401,
+              "Question not found"
+            );
+            return res.status(401).send(notFoundResponse.toObject());
+          }
+
           // securityQuestion object matching params id
           console.log(securityQuestion);
           const findByIdResponse = new BaseResponse(
@@ -182,6 +191,16 @@ router.put("/:id", async (req, res) => {
             .status(500)
             .send(updateSecurityQuestionMongodbErrorResponse.toObject());
         } else {
+          // handle Question is not found in Database
+          if (!securityQuestion) {
+            console.log("Question not found");
+            const notFoundResponse = new BaseResponse(
+              401,
+              "Question not found"
+            );
+            return res.status(401).send(notFoundResponse.toObject());
+          }
+
           console.log(securityQuestion);
           // Scaffold SecurityQuestion with request data
           securityQuestion.set({
@@ -252,13 +271,13 @@ router.delete("/:id", async (req, res) => {
         }
 
         // handle Question is not found in Database
-        if (!SecurityQuestion) {
+        if (!securityQuestion) {
           console.log("Question not found");
           const notFoundResponse = new BaseResponse(401, "Question not found");
           return res.status(401).send(notFoundResponse.toObject());
         }
 
-        console.log(SecurityQuestion);
+        console.log(securityQuestion);
 
         // Scaffold SecurityQuestion with request data
         securityQuestion.set({

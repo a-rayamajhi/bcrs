@@ -1,7 +1,7 @@
 <!-- This is the home.html page -->
 <div fxLayout="column" class="main-welcome">
   <h1 class="title">
-    Welcome to WEB 450's - Bob's Computer Repair Shop <br />
+    Bob's Computer Repair Shop <br />
     <span class="subtitle"> Service Repair Forms </span>
   </h1>
 </div>
@@ -79,13 +79,20 @@
         <div fxLayout="column" style="margin: 3rem">
           <h4 fxFlex>Standard Fees</h4>
           <mat-form-field fxFlex>
-            <input matInput name="parts" ngModel="" placeholder="Parts" />
+            <input
+              matInput
+              name="parts"
+              ngModel=""
+              type="number"
+              placeholder="Parts"
+            />
           </mat-form-field>
           <mat-form-field fxFlex>
             <input
               matInput
               name="labor"
               ngModel=""
+              type="number"
               placeholder="Labor @ 50.00/hr"
             />
           </mat-form-field>
