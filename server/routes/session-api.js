@@ -43,7 +43,7 @@ router.post("/signin", async (req, res) => {
         // handle falsey user
         if (!user) {
           console.log("User not found", req.body.userName);
-          status = 401;
+          status = 404;
           const invalidUserNameResponse = new BaseResponse(
             status,
             "User not found"
@@ -61,7 +61,7 @@ router.post("/signin", async (req, res) => {
         // if password is invalid
         if (!passwordIsValid) {
           console.log("Invalid password", user.userName);
-          status = 401;
+          status = 404;
           const invalidPasswordResponse = new BaseResponse(
             status,
             "Invalid username and/or password"

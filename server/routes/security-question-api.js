@@ -83,10 +83,10 @@ router.get("/:id", async (req, res) => {
           if (!securityQuestion) {
             console.log("Question not found");
             const notFoundResponse = new BaseResponse(
-              401,
+              404,
               "Question not found"
             );
-            return res.status(401).send(notFoundResponse.toObject());
+            return res.status(404).send(notFoundResponse.toObject());
           }
 
           // securityQuestion object matching params id
@@ -195,10 +195,10 @@ router.put("/:id", async (req, res) => {
           if (!securityQuestion) {
             console.log("Question not found");
             const notFoundResponse = new BaseResponse(
-              401,
+              404,
               "Question not found"
             );
-            return res.status(401).send(notFoundResponse.toObject());
+            return res.status(404).send(notFoundResponse.toObject());
           }
 
           console.log(securityQuestion);
@@ -273,8 +273,8 @@ router.delete("/:id", async (req, res) => {
         // handle Question is not found in Database
         if (!securityQuestion) {
           console.log("Question not found");
-          const notFoundResponse = new BaseResponse(401, "Question not found");
-          return res.status(401).send(notFoundResponse.toObject());
+          const notFoundResponse = new BaseResponse(404, "Question not found");
+          return res.status(404).send(notFoundResponse.toObject());
         }
 
         console.log(securityQuestion);

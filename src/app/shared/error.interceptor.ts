@@ -31,7 +31,7 @@ export class ErrorInterceptor implements HttpInterceptor {
     return next.handle(req).pipe(
       catchError((err) => {
         // Intercept 400 errors
-        if ([400, 401, 405, 407, 410].indexOf(err.status) !== -1) {
+        if ([400, 404, 405, 407, 410].indexOf(err.status) !== -1) {
           this.router.navigate(['/session/404']);
         }
 

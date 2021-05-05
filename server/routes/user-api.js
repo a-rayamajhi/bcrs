@@ -258,8 +258,8 @@ router.delete("/:id", async (req, res) => {
       // handle User is not found in Database
       if (!user) {
         console.log("User not found");
-        const notFoundResponse = new BaseResponse(401, "User not found");
-        return res.status(401).send(notFoundResponse.toObject());
+        const notFoundResponse = new BaseResponse(404, "User not found");
+        return res.status(404).send(notFoundResponse.toObject());
       }
 
       console.log(user);

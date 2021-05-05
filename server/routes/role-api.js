@@ -89,8 +89,8 @@ router.get("/:roleId", async (req, res) => {
       // handle Role is not found in Database
       if (!role) {
         console.log("Role not found");
-        const notFoundResponse = new BaseResponse(401, "Role not found");
-        return res.status(401).send(notFoundResponse.toObject());
+        const notFoundResponse = new BaseResponse(404, "Role not found");
+        return res.status(404).send(notFoundResponse.toObject());
       }
 
       console.log(role);
@@ -241,8 +241,8 @@ router.delete("/:roleId", async (req, res) => {
       // handle Role is not found in Database
       if (!role) {
         console.log("Role not found");
-        const notFoundResponse = new BaseResponse(401, "Role not found");
-        return res.status(401).send(notFoundResponse.toObject());
+        const notFoundResponse = new BaseResponse(404, "Role not found");
+        return res.status(404).send(notFoundResponse.toObject());
       }
 
       console.log(role);
