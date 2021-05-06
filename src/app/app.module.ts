@@ -40,6 +40,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 // Custom Components
 import { SecurityQuestionCreateComponent } from './pages/security-question-create/security-question-create.component';
@@ -117,6 +118,7 @@ import { PurchasesByServiceGraphComponent } from './pages/purchases-by-service-g
     MatSelectModule,
     ChartModule,
     MatCheckboxModule,
+    MatSnackBarModule,
   ],
   // ErrorInterceptor
   providers: [

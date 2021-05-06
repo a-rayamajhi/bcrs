@@ -14,6 +14,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { SnackBarService } from 'src/app/shared/services/snackBar.service';
 
 @Component({
   selector: 'app-signin',
@@ -22,12 +23,12 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class SigninComponent implements OnInit {
   form: FormGroup;
-  errorMessage: string;
 
   constructor(
     private router: Router,
     private cookieService: CookieService,
     private fb: FormBuilder,
+    private snackBarService: SnackBarService,
     private http: HttpClient
   ) {}
 
@@ -63,7 +64,7 @@ export class SigninComponent implements OnInit {
         },
         (err) => {
           console.log(err);
-          this.errorMessage = err;
+          this.snackBarService.openSnackBar(err, 'ERROR');
         }
       );
   }

@@ -11,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { SnackBarService } from 'src/app/shared/services/snackBar.service';
 
 @Component({
   selector: 'app-verify-username-form',
@@ -23,6 +24,7 @@ export class VerifyUsernameFormComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private fb: FormBuilder,
+    private snackBarService: SnackBarService,
     private router: Router
   ) {}
 
@@ -44,6 +46,7 @@ export class VerifyUsernameFormComponent implements OnInit {
         }
       },
       (err) => {
+        this.snackBarService.openSnackBar(err, 'ERROR');
         console.log(err);
       }
     );

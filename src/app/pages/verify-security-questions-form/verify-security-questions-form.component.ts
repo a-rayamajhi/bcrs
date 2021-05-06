@@ -13,6 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ISecurityQuestion } from '../../shared/interfaces/security-question.interface';
+import { SnackBarService } from 'src/app/shared/services/snackBar.service';
 
 @Component({
   selector: 'app-verify-security-questions-form',
@@ -29,12 +30,12 @@ export class VerifySecurityQuestionsFormComponent implements OnInit {
   question2: string;
   question3: string;
   form: FormGroup;
-  errorMessage: string;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private http: HttpClient,
+    private snackBarService: SnackBarService,
     private fb: FormBuilder
   ) {
     // Username
@@ -115,9 +116,10 @@ export class VerifySecurityQuestionsFormComponent implements OnInit {
             skipLocationChange: true,
           });
         } else {
-          console.log('Unable to verify security question answers');
-          this.errorMessage =
-            'Unable to verify account. Responses did not match with the existing records';
+          this.snackBarService.openSnackBar(
+            'Unable to verify security question answers',
+            'ERROR'
+          );
         }
       });
   }

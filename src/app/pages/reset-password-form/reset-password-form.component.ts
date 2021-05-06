@@ -12,6 +12,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { SnackBarService } from 'src/app/shared/services/snackBar.service';
 
 @Component({
   selector: 'app-reset-password-form',
@@ -28,6 +29,7 @@ export class ResetPasswordFormComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private fb: FormBuilder,
+    private snackBarService: SnackBarService,
     private cookieService: CookieService
   ) {
     this.isAuthenticated = this.route.snapshot.queryParamMap.get(
@@ -61,7 +63,7 @@ export class ResetPasswordFormComponent implements OnInit {
           this.router.navigate(['/']);
         },
         (err) => {
-          console.log(err);
+          this.snackBarService.openSnackBar(err, 'ERROR');
         }
       );
   }

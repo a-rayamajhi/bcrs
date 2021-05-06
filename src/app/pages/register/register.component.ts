@@ -1,3 +1,4 @@
+import { SnackBarService } from './../../shared/services/snackBar.service';
 /*
 ============================================
 ; Title: RegisterComponent
@@ -32,12 +33,12 @@ export class RegisterComponent implements OnInit {
   securityQuestions: any;
   form: FormGroup;
   registrationForm: FormGroup;
-  errorMessage: string;
 
   constructor(
     private http: HttpClient,
     private router: Router,
     private fb: FormBuilder,
+    private snackBarService: SnackBarService,
     private cookieService: CookieService // private securityQuestionsService: SecurityQuestionService
   ) {
     // Needs to get moved elsewhere
@@ -127,12 +128,12 @@ export class RegisterComponent implements OnInit {
             /**
              * User is not authenticated and we should return the error message
              */
-            this.errorMessage = res['message'];
+            this.snackBarService.openSnackBar(res['message'], 'ERROR');
           }
         },
         (err) => {
           console.log(err);
-          this.errorMessage = err;
+          this.snackBarService.openSnackBar(err, 'ERROR');
         }
       );
   }

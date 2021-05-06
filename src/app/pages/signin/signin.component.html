@@ -13,17 +13,6 @@
           Sign in
         </mat-card-subtitle>
 
-        <mat-card
-          *ngIf="errorMessage"
-          class="mat-elevatio-z0"
-          style="width: 75%; background-color: red; color: white"
-        >
-          <mat-card-content>
-            <div class="msg-error">{{ errorMessage }}</div>
-          </mat-card-content>
-        </mat-card>
-        <br />
-
         <!-- Sign in Form -->
         <form
           [formGroup]="form"

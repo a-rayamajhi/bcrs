@@ -19,6 +19,7 @@ import { ServiceRepairService } from 'src/app/shared/services/service-repair.ser
 import { InvoiceService } from 'src/app/shared/services/invoice.service';
 import { IInvoice } from 'src/app/shared/interfaces/invoice.interface';
 import { InvoiceSummaryDialogComponent } from 'src/app/dialogs/invoice-summary-dialog.component';
+import { SnackBarService } from 'src/app/shared/services/snackBar.service';
 
 @Component({
   selector: 'app-home',
@@ -37,7 +38,8 @@ export class HomeComponent implements OnInit {
     private dialog: MatDialog,
     private router: Router,
     private serviceRepairService: ServiceRepairService,
-    private invoiceService: InvoiceService
+    private invoiceService: InvoiceService,
+    private snackBarService: SnackBarService
   ) {
     // get a username
     this.userName = this.cookieService.get('session-user');
@@ -117,7 +119,7 @@ export class HomeComponent implements OnInit {
 
         this.invoiceService.createInvoice(invoice.userName, invoice).subscribe(
           (res) => {
-            this.router.navigate(['/']);
+            this.snackBarService.openSnackBar('Order Confirmed', 'INFO');
           },
           (err) => {
             console.log(err);
