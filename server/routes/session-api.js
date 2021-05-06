@@ -258,8 +258,11 @@ router.get("/verify/users/:userName", async (req, res) => {
       }
 
       if (!user) {
-        const verifyUserNotFound = new ErrorResponse("404", "Record Not Found");
-        return res.status(404).send(verifyUserNotFound.toObject());
+        const verifyUserNotFound = new ErrorResponse(
+          "401",
+          "Incorrect Username"
+        );
+        return res.status(401).send(verifyUserNotFound.toObject());
       }
 
       console.log(user);
