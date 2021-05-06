@@ -21,13 +21,19 @@
           </button>
 
           <mat-menu #menu="matMenu" xPosition="before">
-            <button routerLink="/users" mat-menu-item>
+            <button *ngIf="isAdmin()" routerLink="/users" mat-menu-item>
               User Configuration
             </button>
-            <button routerLink="/security-questions" mat-menu-item>
+            <button
+              *ngIf="isAdmin()"
+              routerLink="/security-questions"
+              mat-menu-item
+            >
               Security Question
             </button>
-            <button routerLink="/roles" mat-menu-item>Roles</button>
+            <button *ngIf="isAdmin()" routerLink="/roles" mat-menu-item>
+              Roles
+            </button>
             <button
               *ngIf="isAdmin()"
               routerLink="/purchases-by-service-graph"

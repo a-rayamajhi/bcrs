@@ -5,10 +5,24 @@
     <div fxLayout="column">
       <mat-card class="mat-elevation-z0 login-container">
         <div class="app-title" mat-button routerLink="/">BCRS</div>
+        <mat-card-title class="login-subtitle mat-headline"
+          >Bob's Computer Repair Shop</mat-card-title
+        >
+
         <mat-card-subtitle class="login-subtitle mat-headline">
           Sign in
         </mat-card-subtitle>
-        <br /><br />
+
+        <mat-card
+          *ngIf="errorMessage"
+          class="mat-elevatio-z0"
+          style="width: 75%; background-color: red; color: white"
+        >
+          <mat-card-content>
+            <div class="msg-error">{{ errorMessage }}</div>
+          </mat-card-content>
+        </mat-card>
+        <br />
 
         <!-- Sign in Form -->
         <form

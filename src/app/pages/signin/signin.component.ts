@@ -63,7 +63,7 @@ export class SigninComponent implements OnInit {
         },
         (err) => {
           console.log(err);
-          this.errorMessage = err.error.message;
+          this.errorMessage = err;
         }
       );
   }

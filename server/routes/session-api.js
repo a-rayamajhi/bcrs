@@ -42,11 +42,11 @@ router.post("/signin", async (req, res) => {
 
         // handle falsey user
         if (!user) {
-          console.log("User not found", req.body.userName);
-          status = 404;
+          console.log("Incorrect Username and/or password", req.body.userName);
+          status = 401;
           const invalidUserNameResponse = new BaseResponse(
             status,
-            "User not found"
+            "Incorrect Username and/or password"
           );
           return res.status(status).send(invalidUserNameResponse.toObject());
         }
@@ -61,7 +61,7 @@ router.post("/signin", async (req, res) => {
         // if password is invalid
         if (!passwordIsValid) {
           console.log("Invalid password", user.userName);
-          status = 404;
+          status = 401;
           const invalidPasswordResponse = new BaseResponse(
             status,
             "Invalid username and/or password"
@@ -150,11 +150,11 @@ router.post("/register", async (req, res) => {
         } else {
           console.log("This provided username already exists in our system");
           const userAlreadyExistsErrorResponse = new ErrorResponse(
-            "500",
+            "409",
             "User already exists in our system",
             null
           );
-          res.status(500).send(userAlreadyExistsErrorResponse.toObject());
+          res.status(409).send(userAlreadyExistsErrorResponse.toObject());
         }
       }
     });

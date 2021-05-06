@@ -7,6 +7,10 @@
     <div fxLayout="column">
       <mat-card class="mat-elevation-z0 login-container">
         <div class="app-title" mat-button routerLink="/">BCRS</div>
+        <mat-card-title class="login-subtitle mat-headline"
+          >Bob's Computer Repair Shop</mat-card-title
+        >
+
         <mat-card-subtitle class="login-subtitle mat-headline">
           Verify User
         </mat-card-subtitle>
@@ -24,9 +28,19 @@
             </mat-form-field>
 
             <br /><br />
-            <div fxFlex fxLayoutAlign="end">
-              <button mat-raised-button color="accent">Submit</button>
-            </div>
+            <mat-card-actions fxFlex fxLayoutAlign="end">
+              <button
+                mat-raised-button
+                color="primary"
+                routerLink="/"
+                type="button"
+              >
+                Cancel
+              </button>
+              <button mat-raised-button color="accent" type="submit">
+                Submit
+              </button>
+            </mat-card-actions>
           </mat-card-content>
         </form>
       </mat-card>
