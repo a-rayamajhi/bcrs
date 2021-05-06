@@ -37,7 +37,12 @@
               >
                 Cancel
               </button>
-              <button mat-raised-button color="accent" type="submit">
+              <button
+                mat-raised-button
+                color="accent"
+                type="submit"
+                [disabled]="!form.valid"
+              >
                 Submit
               </button>
             </mat-card-actions>
